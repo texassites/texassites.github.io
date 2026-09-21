@@ -49,7 +49,7 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   .hero { min-height:680px; }
   .site-nav .container { padding-top:8px; }
   .site-logo { width:131px; }
-  .site-nav .navbar-collapse { position:absolute; top:100%; left:0; right:0; z-index:2; padding:74px 1rem 1rem; background:rgba(20,43,54,.96); border:1px solid rgba(247,240,228,.3); border-top:0; }
+  .site-nav .navbar-collapse { position:absolute; top:calc(100% + 70px); left:0; right:0; z-index:2; padding:.5rem 1rem 1rem; background:#173743; border:1px solid rgba(247,240,228,.3); border-radius:0 0 14px 14px; }
   .site-nav .navbar-nav { margin-left:0 !important; }
   .site-nav .nav-link { padding:.7rem 1rem; }
   .site-nav .nav-pill { padding:.7rem 1rem !important; border:0; border-radius:0; }
