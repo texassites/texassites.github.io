@@ -49,6 +49,7 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   .hero { min-height:680px; }
   .site-nav .container { padding-top:8px; }
   .site-logo { width:131px; }
+  .site-nav .nav-pill { padding:.5rem 1rem !important; border:0; border-radius:0; }
   .hero-content { padding-top:100px; padding-bottom:110px; }
   .section { padding-top:76px; padding-bottom:76px; }
   .service { min-height:auto; }
