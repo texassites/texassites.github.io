@@ -5,7 +5,7 @@ body { margin:0; color:var(--ink); background:var(--cream); font-family:"DM Sans
 a { color:inherit; text-decoration:none; }
 .hero { min-height:750px; color:var(--cream); background:linear-gradient(90deg,rgba(20,43,54,.78),rgba(20,43,54,.42) 52%,rgba(20,43,54,.12)),url("../img/flag.jpg") center/cover; }
 .site-nav { --bs-navbar-padding-y:.25rem; border-bottom:1px solid rgba(247,240,228,.3); }
-.site-nav .container { position:relative; padding-top:15px; padding-bottom:20px; }
+.site-nav .container { position:relative; padding-top:20px; padding-bottom:20px; }
 .site-logo { position:absolute; top:calc(100% + 5px); left:50%; z-index:3; display:block; width:182px; transform:translate(-50%,-50%); }
 .site-logo img { display:block; width:100%; height:auto; }
 .site-nav .nav-link { color:rgba(247,240,228,.82); font-size:13px; }
