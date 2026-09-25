@@ -1,3 +1,11 @@
 {
-  "texas-sites": []
+  "texas-sites": [
+    {
+      "id": "efmk3g",
+      "customerName": "Test Customer",
+      "testimonial": "This is a test testimonial.",
+      "created": "2026-09-25T21:09:07.644Z",
+      "published": true
+    }
+  ]
 }
