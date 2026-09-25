@@ -259,12 +259,7 @@
 
         const response = await fetch(
           `${TESTIMONIALS_URL}?nocache=${Date.now()}`,
-          {
-            cache: "no-store",
-            headers: {
-              "Cache-Control": "no-cache"
-            }
-          }
+          { cache: "no-store" }
         );
 
         if (!response.ok) {
