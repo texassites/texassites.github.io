@@ -1,13 +1,6 @@
 {
   "texas-sites": [
     {
-      "id": "efmk3g",
-      "customerName": "Test Customer",
-      "testimonial": "This is a test testimonial.",
-      "created": "2026-09-25T21:09:07.644Z",
-      "published": true
-    },
-    {
       "id": "z864a2",
       "customerName": "Ernest Durda",
       "testimonial": "does this work",
@@ -26,13 +19,6 @@
       "customerName": "Ernest Durda2",
       "testimonial": "again amazing work",
       "created": "2026-09-25T21:54:53.054Z",
-      "published": true
-    },
-    {
-      "id": "0sg8vb",
-      "customerName": "Test Customer",
-      "testimonial": "Great work",
-      "created": "2026-09-25T22:32:28.364Z",
       "published": true
     }
   ],
