@@ -271,7 +271,7 @@
       return date.toLocaleString();
     }
 
-    async function waitForPublicTestimonial(testimonialId, column) {
+    async function waitForPublicTestimonial(testimonialId, site, column) {
       const status = column.querySelector("[data-testimonial-status]");
       const maxAttempts = 30;
       let attempt = 0;
@@ -290,8 +290,8 @@
           }
 
           const allTestimonials = await response.json();
-          const siteTestimonials = Array.isArray(allTestimonials["texas-sites"])
-            ? allTestimonials["texas-sites"]
+          const siteTestimonials = Array.isArray(allTestimonials[site])
+            ? allTestimonials[site]
             : [];
 
           const found = siteTestimonials.some((item) => item.id === testimonialId);
@@ -328,7 +328,12 @@
       await check();
     }
 
-    function renderTestimonialCard(item, prepend = false, waitForWebsite = false) {
+    function renderTestimonialCard(
+        item,
+        prepend = false,
+        waitForWebsite = false,
+        site = ""
+    ) {
       const column = document.createElement("div");
       column.className = "col-12 col-md-6 col-lg-4";
 
@@ -337,8 +342,10 @@
           <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
             <h3 class="h5 mb-0">${escapeHtml(item.customerName)}</h3>
             <span class="testimonial-status" data-testimonial-status>
-              <span class="badge text-bg-warning">Published</span>
-              <span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>
+              ${waitForWebsite ?
+                '<span class="badge text-bg-warning">Published</span>' +
+                '<span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>' :
+                '<span class="badge text-bg-success">Published</span>'}
             </span>
           </div>
 
@@ -359,7 +366,7 @@
       }
 
       if (waitForWebsite) {
-        waitForPublicTestimonial(item.id, column);
+        waitForPublicTestimonial(item.id, site, column);
       }
     }
 
@@ -543,7 +550,12 @@
 
         testimonialsEmpty.classList.add("hidden");
         testimonialsLoading.classList.add("hidden");
-        renderTestimonialCard(addedTestimonial, true, true);
+        renderTestimonialCard(
+          addedTestimonial,
+          true,
+          true,
+          result.site
+        );
       } catch (error) {
         console.error("Add testimonial error:", error);
         testimonialMessage.textContent =
