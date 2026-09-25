@@ -234,9 +234,6 @@
 
     const ADMIN_EMAIL = "ernestdurda@gmail.com";
 
-    const TESTIMONIALS_URL =
-      "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json";
-
     function escapeHtml(value) {
       return String(value)
           .replace(/&/g, "&amp;")
@@ -290,28 +287,33 @@
       testimonialsGrid.innerHTML = "";
 
       try {
-        const tokenResult = await user.getIdTokenResult(true);
-        const site = tokenResult.claims.site;
-
-        if (!site || typeof site !== "string") {
-          throw new Error("No site is assigned to this account.");
-        }
-
-        siteLabel.textContent = `Site: ${site}`;
+        const token = await user.getIdToken(true);
 
         const response = await fetch(
-          `${TESTIMONIALS_URL}?nocache=${Date.now()}`,
-          { cache: "no-store" }
+          "https://us-central1-texas-sites01.cloudfunctions.net/addTestimonial",
+          {
+            method: "GET",
+            headers: {
+              "Authorization": `Bearer ${token}`
+            },
+            cache: "no-store"
+          }
         );
 
+        const result = await response.json();
+
         if (!response.ok) {
-          throw new Error("Unable to load testimonials.");
+          throw new Error(
+              result.error || "Unable to load testimonials."
+          );
         }
 
-        const allTestimonials = await response.json();
-        const testimonials = Array.isArray(allTestimonials[site]) ?
-          allTestimonials[site] :
+        const site = result.site;
+        const testimonials = Array.isArray(result.testimonials) ?
+          result.testimonials :
           [];
+
+        siteLabel.textContent = `Site: ${site}`;
 
         testimonialsLoading.classList.add("hidden");
 
@@ -331,6 +333,7 @@
           error.message || "Unable to load testimonials.";
       }
     }
+
 
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
