@@ -87,6 +87,13 @@
         <button id="loginButton" type="submit" class="btn btn-texas w-100">
           Sign In
         </button>
+
+        <div class="text-center mt-3">
+          <button id="forgotPasswordButton" type="button" class="btn btn-link p-0">
+            Forgot your password?
+          </button>
+        </div>
+
         <div id="message" class="mt-3"></div>
       </form>
     </section>
@@ -170,6 +177,7 @@
     import {
       getAuth,
       signInWithEmailAndPassword,
+      sendPasswordResetEmail,
       onAuthStateChanged,
       signOut
     } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
@@ -191,6 +199,8 @@
     const dashboard = document.getElementById("dashboard");
     const form = document.getElementById("loginForm");
     const button = document.getElementById("loginButton");
+    const forgotPasswordButton =
+      document.getElementById("forgotPasswordButton");
     const message = document.getElementById("message");
 
     const testimonialForm = document.getElementById("testimonialForm");
@@ -283,10 +293,6 @@
               <div class="testimonial-meta">
                 Added ${escapeHtml(formatDate(item.created))}
               </div>
-
-              <div class="testimonial-meta mt-1">
-                ID: ${escapeHtml(item.id)}
-              </div>
             </article>
           `;
 
@@ -339,6 +345,40 @@
         message.className = "mt-3 text-danger";
       } finally {
         button.disabled = false;
+      }
+    });
+
+    forgotPasswordButton.addEventListener("click", async () => {
+      message.textContent = "";
+      message.className = "mt-3";
+      forgotPasswordButton.disabled = true;
+
+      try {
+        const email = document.getElementById("email").value.trim();
+
+        if (!email) {
+          throw new Error(
+              "Enter your email address above, then click Forgot your password."
+          );
+        }
+
+        await sendPasswordResetEmail(auth, email);
+
+        message.textContent =
+          "If an account exists for that email address, a password reset email has been sent.";
+        message.className = "mt-3 text-success fw-semibold";
+      } catch (error) {
+        if (error.code === "auth/invalid-email") {
+          message.textContent = "Enter a valid email address.";
+        } else {
+          message.textContent =
+            error.message ||
+            "Unable to send the password reset email.";
+        }
+
+        message.className = "mt-3 text-danger";
+      } finally {
+        forgotPasswordButton.disabled = false;
       }
     });
 
