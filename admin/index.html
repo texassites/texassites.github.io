@@ -255,8 +255,13 @@
         siteLabel.textContent = `Site: ${site}`;
 
         const response = await fetch(
-          `${TESTIMONIALS_URL}?t=${Date.now()}`,
-          { cache: "no-store" }
+          `${TESTIMONIALS_URL}?nocache=${Date.now()}`,
+          {
+            cache: "no-store",
+            headers: {
+              "Cache-Control": "no-cache"
+            }
+          }
         );
 
         if (!response.ok) {
