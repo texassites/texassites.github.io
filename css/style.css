@@ -1,7 +1,7 @@
 :root { --ink:#2d2d28; --navy:#315867; --red:#a64b40; --cream:#fbf5ea; --sand:#eee3d0; --line:rgba(45,45,40,.16); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { margin:0; color:var(--ink); background:var(--cream); font-family:"DM Sans",sans-serif; }
+body { margin:0; color:var(--ink); background:var(--cream); font-family:"DM Sans",sans-serif; overflow-x:hidden; }
 a { color:inherit; text-decoration:none; }
 .hero { min-height:750px; color:var(--cream); background:linear-gradient(90deg,rgba(20,43,54,.78),rgba(20,43,54,.42) 52%,rgba(20,43,54,.12)),url("../img/flag.jpg") center/cover; }
 .site-nav { --bs-navbar-padding-y:.25rem; border-bottom:1px solid rgba(247,240,228,.3); }
@@ -59,8 +59,8 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   footer span { display:block; }
 }
 
-.testimonials-section { background:var(--cream); }
-.testimonial-carousel { overflow:hidden; }
+.testimonials-section { padding-top:82px; padding-bottom:68px; background:var(--cream); }
+.testimonial-carousel { width:100%; min-width:0; overflow:hidden; }
 .testimonial-track {
   display:flex;
   gap:24px;
@@ -81,11 +81,12 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 .testimonial-quote { color:var(--red); font-family:Fraunces,Georgia,serif; font-size:58px; line-height:.65; }
 .testimonial-item blockquote { margin:18px 0 30px; color:#51584f; font-family:Fraunces,Georgia,serif; font-size:22px; line-height:1.35; }
 .testimonial-name { margin:0; color:var(--navy); font-size:13px; font-weight:700; }
-.testimonial-controls { display:flex; justify-content:center; margin-top:28px; }
+.testimonial-controls { display:flex; justify-content:center; margin-top:22px; }
 .testimonial-dots { display:flex; align-items:center; gap:8px; }
 .testimonial-dot { width:8px; height:8px; padding:0; border:0; border-radius:50%; background:rgba(49,88,103,.28); cursor:pointer; }
 .testimonial-dot.active { width:24px; border-radius:99px; background:var(--red); }
 @media (max-width:767.98px) {
+  .testimonials-section { padding-top:70px; padding-bottom:52px; }
   .testimonial-track { gap:0; }
   .testimonial-item { min-height:230px; padding:30px 26px; }
   .testimonial-item blockquote { font-size:21px; }
