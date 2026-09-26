@@ -84,9 +84,9 @@
       display: inline-block;
       width: 6.25rem;
       height: .6rem;
-      border: 1px solid rgba(25, 135, 84, .25);
+      border: 1px solid rgba(214, 182, 86, .45);
       border-radius: 999px;
-      background: rgba(25, 135, 84, .08);
+      background: rgba(214, 182, 86, .10);
       overflow: hidden;
       position: relative;
       flex: 0 0 auto;
@@ -99,7 +99,7 @@
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      background: #198754;
+      background: #d6b656;
       transform-origin: left center;
       animation: testimonial-progress 10s linear infinite;
     }
@@ -366,8 +366,8 @@
           '<span class="text-success" title="The public website has the latest testimonial.">✓ Live on website</span>';
       } else {
         status.innerHTML =
-          '<span class="badge text-bg-warning">Published</span>' +
-          '<span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>';
+          '<span class="badge text-bg-warning">Submitted</span>' +
+          '<span class="sync-spinner" aria-label="Pending update" title="Pending update"></span>';
       }
     }
 
@@ -406,8 +406,8 @@
                   "[data-testimonial-status]"
               );
               status.innerHTML =
-                '<span class="badge text-bg-warning">Published</span>' +
-                '<span class="text-secondary">Website update is taking longer than expected.</span>';
+                '<span class="badge text-bg-warning">Submitted</span>' +
+                '<span class="sync-spinner" aria-label="Pending update" title="Pending update"></span>';
             }
             return;
           }
@@ -421,8 +421,8 @@
                 "[data-testimonial-status]"
             );
             status.innerHTML =
-              '<span class="badge text-bg-warning">Published</span>' +
-              '<span class="text-secondary">Website update is taking longer than expected.</span>';
+              '<span class="badge text-bg-warning">Submitted</span>' +
+              '<span class="sync-spinner" aria-label="Pending update" title="Pending update"></span>';
             return;
           }
 
@@ -452,8 +452,8 @@
               ${isLive ?
                 '<span class="badge text-bg-success">Published</span>' +
                 '<span class="text-success" title="The public website has the latest testimonial.">✓ Live on website</span>' :
-                '<span class="badge text-bg-warning">Published</span>' +
-                '<span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>'}
+                '<span class="badge text-bg-warning">Submitted</span>' +
+                '<span class="sync-spinner" aria-label="Pending update" title="Pending update"></span>'}
             </span>
           </div>
 
