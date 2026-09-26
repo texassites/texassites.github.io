@@ -83,27 +83,19 @@
       display: inline-block;
       width: .9rem;
       height: .9rem;
-      border: 2px solid #198754;
+      border: 2px solid rgba(25, 135, 84, .18);
+      border-top-color: #198754;
+      border-right-color: #198754;
       border-radius: 50%;
-      position: relative;
-      overflow: hidden;
+      animation: testimonial-spin 10s linear infinite;
+      flex: 0 0 auto;
     }
-    .sync-spinner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: #198754;
-      border-radius: 50%;
-      transform: scaleY(0);
-      transform-origin: bottom;
-      animation: testimonial-fill 10s ease-in-out infinite;
-    }
-    @keyframes testimonial-fill {
-      0%, 100% {
-        transform: scaleY(0);
+    @keyframes testimonial-spin {
+      0% {
+        transform: rotate(0deg);
       }
-      50% {
-        transform: scaleY(1);
+      100% {
+        transform: rotate(360deg);
       }
     }
     .hidden {
@@ -160,7 +152,7 @@
 
         <div class="refresh-notice p-3 p-md-4 mb-4">
           <div class="refresh-notice-text">
-            <strong>Please allow up to five minutes for your customers to see new testimonials on your website.</strong>
+            <strong>Please allow up to six minutes for your customers to see new testimonials on your website.</strong>
           </div>
         </div>
 
