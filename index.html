@@ -244,6 +244,7 @@
         let testimonials = [];
         let currentIndex = 0;
         let timer;
+        const slideInterval = 6500;
         let isTransitioning = false;
 
         const escapeHtml = (value) => String(value)
@@ -257,9 +258,9 @@
           const card = document.createElement("article");
           card.className = "testimonial-item";
           card.innerHTML = `
+            <p class="testimonial-name">${escapeHtml(item.customerName)}</p>
             <div class="testimonial-quote" aria-hidden="true">“</div>
             <blockquote>${escapeHtml(item.testimonial)}</blockquote>
-            <p class="testimonial-name">${escapeHtml(item.customerName)}</p>
           `;
           return card;
         };
@@ -339,7 +340,7 @@
 
         const restart = () => {
           window.clearInterval(timer);
-          timer = window.setInterval(advance, 6500);
+          timer = window.setInterval(advance, slideInterval);
         };
 
         track.addEventListener("transitionend", () => {
