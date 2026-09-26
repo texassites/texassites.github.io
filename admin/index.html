@@ -252,6 +252,9 @@
 
     const ADMIN_EMAIL = "ernestdurda@gmail.com";
 
+    const PUBLIC_TESTIMONIALS_URL =
+      "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json";
+
     function escapeHtml(value) {
       return String(value)
           .replace(/&/g, "&amp;")
@@ -271,7 +274,34 @@
       return date.toLocaleString();
     }
 
-    async function waitForPublicTestimonial(testimonialId, site, column) {
+    function normalizeTestimonials(testimonials) {
+      return testimonials
+          .map((item) => ({
+            id: item.id,
+            customerName: item.customerName,
+            testimonial: item.testimonial,
+            created: item.created,
+            published: item.published
+          }))
+          .sort((a, b) => String(a.id).localeCompare(String(b.id)));
+    }
+
+    function testimonialsMatch(authoritative, publicTestimonials) {
+      const expected = normalizeTestimonials(authoritative);
+      const actual = normalizeTestimonials(publicTestimonials);
+
+      if (expected.length !== actual.length) {
+        return false;
+      }
+
+      return JSON.stringify(expected) === JSON.stringify(actual);
+    }
+
+    async function waitForPublicTestimonial(
+        authoritativeTestimonials,
+        site,
+        column
+    ) {
       const status = column.querySelector("[data-testimonial-status]");
       const maxAttempts = 30;
       let attempt = 0;
@@ -280,26 +310,21 @@
         attempt += 1;
 
         try {
-          const response = await fetch(
-            "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json?nocache=" + crypto.randomUUID(),
-            { cache: "no-store" }
-          );
+          const response = await fetch(PUBLIC_TESTIMONIALS_URL);
 
           if (!response.ok) {
             throw new Error("Unable to check website status.");
           }
 
           const allTestimonials = await response.json();
-          const siteTestimonials = Array.isArray(allTestimonials[site])
+          const publicTestimonials = Array.isArray(allTestimonials[site])
             ? allTestimonials[site]
             : [];
 
-          const found = siteTestimonials.some((item) => item.id === testimonialId);
-
-          if (found) {
+          if (testimonialsMatch(authoritativeTestimonials, publicTestimonials)) {
             status.innerHTML =
               '<span class="badge text-bg-success">Published</span>' +
-              '<span class="text-success" title="The public website has the latest testimonial.">✓ Live on website</span>';
+              '<span class="text-success" title="The public website has the latest testimonials.">✓ Live on website</span>';
             return;
           }
 
@@ -328,10 +353,11 @@
       await check();
     }
 
+
     function renderTestimonialCard(
         item,
         prepend = false,
-        waitForWebsite = false,
+        authoritativeTestimonials = null,
         site = ""
     ) {
       const column = document.createElement("div");
@@ -366,7 +392,7 @@
       }
 
       if (waitForWebsite) {
-        waitForPublicTestimonial(item.id, site, column);
+        waitForPublicTestimonial(waitForWebsite, site, column);
       }
     }
 
@@ -550,10 +576,30 @@
 
         testimonialsEmpty.classList.add("hidden");
         testimonialsLoading.classList.add("hidden");
+        const verifyToken = await user.getIdToken(true);
+
+        const verifyResponse = await fetch(
+          "https://us-central1-texas-sites01.cloudfunctions.net/addTestimonial",
+          {
+            method: "GET",
+            headers: {
+              "Authorization": `Bearer ${verifyToken}`
+            }
+          }
+        );
+
+        const verifyResult = await verifyResponse.json();
+
+        if (!verifyResponse.ok) {
+          throw new Error(
+              verifyResult.error || "Unable to verify testimonial status."
+          );
+        }
+
         renderTestimonialCard(
           addedTestimonial,
           true,
-          true,
+          verifyResult.testimonials,
           result.site
         );
       } catch (error) {
