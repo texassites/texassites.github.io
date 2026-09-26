@@ -44,6 +44,45 @@ h2 { font-size:clamp(38px,4.6vw,60px); }
 .contact h2 { max-width:560px; }
 .contact p { max-width:280px; margin:0 0 25px; color:rgba(247,240,228,.7); font-size:14px; line-height:1.6; }
 footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; display:flex; justify-content:space-between; color:#767b70; font-size:12px; border-top:1px solid var(--line); }
+.back-to-top {
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;
+  height:46px;
+  padding:0;
+  border:1px solid rgba(247,240,228,.45);
+  border-radius:50%;
+  background:var(--navy);
+  color:var(--cream);
+  box-shadow:0 6px 18px rgba(23,45,59,.22);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, visibility .25s ease, transform .25s ease, background .2s ease;
+  cursor:pointer;
+}
+.back-to-top.is-visible {
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.back-to-top:hover {
+  background:var(--red);
+}
+.back-to-top svg {
+  width:19px;
+  height:19px;
+  stroke:currentColor;
+  stroke-width:2;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 @media (max-width:767.98px) {
   .hero { min-height:680px; }
   .site-nav .container { padding-top:8px; }
@@ -57,6 +96,7 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   .contact { padding:42px 28px; margin-bottom:28px; }
   footer { display:block; line-height:1.9; }
   footer span { display:block; }
+  .back-to-top { right:16px; bottom:16px; width:44px; height:44px; }
 }
 
 .testimonials-section { padding-top:82px; padding-bottom:68px; background:var(--cream); }
@@ -115,4 +155,5 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 }
 @media (prefers-reduced-motion:reduce) {
   .testimonial-track.is-sliding { transition:none; }
+  .back-to-top { transition:none; }
 }
