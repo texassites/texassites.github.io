@@ -18,7 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="stylesheet" href="css/style.css?v=12">
   </head>
 
   <body>
@@ -241,10 +241,12 @@
         const url = "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json";
         const track = document.getElementById("testimonial-track");
         const dots = document.getElementById("testimonial-dots");
+        const slideInterval = 5000;
+        const slideDuration = 1500;
         let testimonials = [];
         let currentIndex = 0;
         let timer;
-        const slideInterval = 5000;
+        let transitionFallback;
         let isTransitioning = false;
 
         const escapeHtml = (value) => String(value)
@@ -283,7 +285,7 @@
         const setPosition = (animate) => {
           const count = visibleCount();
           const containerWidth = track.parentElement.clientWidth;
-          const gap = 24;
+          const gap = count === 1 ? 0 : 24;
           const cardWidth = (containerWidth - gap * (count - 1)) / count;
           const step = cardWidth + gap;
           const offset = currentIndex * step;
@@ -291,6 +293,10 @@
           track.querySelectorAll(".testimonial-item").forEach((card) => {
             card.style.flexBasis = `${cardWidth}px`;
           });
+
+          track.style.width =
+            `${cardWidth * (testimonials.length + count) +
+              gap * (testimonials.length + count - 1)}px`;
 
           track.classList.toggle("is-sliding", animate);
           track.style.transform = `translate3d(-${offset}px, 0, 0)`;
@@ -320,12 +326,38 @@
           renderDots();
         };
 
+        const finishTransition = () => {
+          window.clearTimeout(transitionFallback);
+          transitionFallback = undefined;
+
+          if (!testimonials.length) {
+            isTransitioning = false;
+            return;
+          }
+
+          if (currentIndex >= testimonials.length) {
+            currentIndex = 0;
+            track.classList.remove("is-sliding");
+            setPosition(false);
+            renderDots();
+          }
+
+          isTransitioning = false;
+        };
+
         const goTo = (index) => {
           if (!testimonials.length || isTransitioning) return;
 
+          window.clearTimeout(timer);
           currentIndex = index;
+          isTransitioning = true;
           setPosition(true);
           renderDots();
+
+          transitionFallback = window.setTimeout(
+              finishTransition,
+              slideDuration + 100
+          );
           restart();
         };
 
@@ -336,24 +368,22 @@
           currentIndex += 1;
           setPosition(true);
           renderDots();
+
+          transitionFallback = window.setTimeout(
+              finishTransition,
+              slideDuration + 100
+          );
         };
 
         const restart = () => {
-          window.clearInterval(timer);
-          timer = window.setInterval(advance, slideInterval);
+          window.clearTimeout(timer);
+          timer = window.setTimeout(advance, slideInterval);
         };
 
-        track.addEventListener("transitionend", () => {
-          if (!testimonials.length) return;
-
-          if (currentIndex >= testimonials.length) {
-            currentIndex = 0;
-            track.classList.remove("is-sliding");
-            setPosition(false);
-            renderDots();
+        track.addEventListener("transitionend", (event) => {
+          if (event.propertyName === "transform") {
+            finishTransition();
           }
-
-          isTransitioning = false;
         });
 
         fetch(url, {cache: "no-store"})
@@ -370,8 +400,12 @@
         let resizeTimer;
         window.addEventListener("resize", () => {
           window.clearTimeout(resizeTimer);
+          window.clearTimeout(transitionFallback);
+          window.clearTimeout(timer);
+
           resizeTimer = window.setTimeout(() => {
             currentIndex = 0;
+            isTransitioning = false;
             render();
             restart();
           }, 150);
