@@ -326,22 +326,32 @@
           if (!testimonials.length) return;
 
           const count = visibleCount();
-          const clones = testimonials.slice(0, count);
+          const logicalIndex = testimonials.length ?
+            ((currentIndex - count) % testimonials.length +
+              testimonials.length) % testimonials.length : 0;
+          const leadingClones = testimonials.slice(-count);
+          const trailingClones = testimonials.slice(0, count);
 
           track.classList.remove("is-sliding");
           track.innerHTML = "";
 
-          testimonials.forEach((item) => {
-            track.appendChild(buildCard(item));
-          });
-
-          clones.forEach((item) => {
+          leadingClones.forEach((item) => {
             const clone = buildCard(item);
             clone.setAttribute("aria-hidden", "true");
             track.appendChild(clone);
           });
 
-          currentIndex = Math.min(currentIndex, testimonials.length - 1);
+          testimonials.forEach((item) => {
+            track.appendChild(buildCard(item));
+          });
+
+          trailingClones.forEach((item) => {
+            const clone = buildCard(item);
+            clone.setAttribute("aria-hidden", "true");
+            track.appendChild(clone);
+          });
+
+          currentIndex = count + logicalIndex;
           setPosition(false);
           renderDots();
         };
@@ -355,8 +365,14 @@
             return;
           }
 
-          if (currentIndex >= testimonials.length) {
-            currentIndex = 0;
+          const count = visibleCount();
+
+          if (currentIndex >= testimonials.length + count) {
+            currentIndex = count;
+            setPosition(false);
+            renderDots();
+          } else if (currentIndex < count) {
+            currentIndex = testimonials.length + count - 1;
             setPosition(false);
             renderDots();
           }
@@ -369,7 +385,7 @@
           if (!testimonials.length || isTransitioning) return;
 
           window.clearTimeout(timer);
-          currentIndex = index;
+          currentIndex = visibleCount() + index;
           isTransitioning = true;
           setPosition(true);
           renderDots();
@@ -405,6 +421,63 @@
           }
         });
 
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchTracking = false;
+
+        track.addEventListener("touchstart", (event) => {
+          if (event.touches.length !== 1) return;
+
+          touchStartX = event.touches[0].clientX;
+          touchStartY = event.touches[0].clientY;
+          touchTracking = true;
+        }, {passive: true});
+
+        track.addEventListener("touchmove", (event) => {
+          if (!touchTracking || event.touches.length !== 1) return;
+
+          const deltaX = event.touches[0].clientX - touchStartX;
+          const deltaY = event.touches[0].clientY - touchStartY;
+
+          if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+            event.preventDefault();
+          }
+        }, {passive: false});
+
+        track.addEventListener("touchend", (event) => {
+          if (!touchTracking || !testimonials.length || isTransitioning) {
+            touchTracking = false;
+            return;
+          }
+
+          const deltaX = event.changedTouches[0].clientX - touchStartX;
+          const deltaY = event.changedTouches[0].clientY - touchStartY;
+          const swipeDistance = 50;
+
+          touchTracking = false;
+
+          if (Math.abs(deltaX) < swipeDistance ||
+              Math.abs(deltaX) <= Math.abs(deltaY)) {
+            return;
+          }
+
+          window.clearTimeout(timer);
+
+          if (deltaX < 0) {
+            advance();
+          } else {
+            currentIndex -= 1;
+            isTransitioning = true;
+            setPosition(true);
+            renderDots();
+
+            transitionFallback = window.setTimeout(
+                finishTransition,
+                slideDuration + 100
+            );
+          }
+        }, {passive: true});
+
         fetch(url, {cache: "no-store"})
             .then((response) => response.ok ? response.json() : null)
             .then((data) => {
@@ -423,7 +496,7 @@
           window.clearTimeout(timer);
 
           resizeTimer = window.setTimeout(() => {
-            currentIndex = 0;
+            currentIndex = visibleCount();
             isTransitioning = false;
             render();
             restart();
