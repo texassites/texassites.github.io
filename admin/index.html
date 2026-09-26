@@ -81,21 +81,33 @@
     }
     .sync-spinner {
       display: inline-block;
-      width: .9rem;
-      height: .9rem;
-      border: 2px solid rgba(25, 135, 84, .18);
-      border-top-color: #198754;
-      border-right-color: #198754;
-      border-radius: 50%;
-      animation: testimonial-spin 10s linear infinite;
+      width: 7rem;
+      height: .7rem;
+      border: 1px solid rgba(25, 135, 84, .25);
+      border-radius: 999px;
+      background: rgba(25, 135, 84, .08);
+      overflow: hidden;
+      position: relative;
       flex: 0 0 auto;
     }
-    @keyframes testimonial-spin {
+    .sync-spinner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: #198754;
+      transform-origin: left center;
+      animation: testimonial-progress 10s linear infinite;
+    }
+    @keyframes testimonial-progress {
       0% {
-        transform: rotate(0deg);
+        transform: scaleX(0);
       }
       100% {
-        transform: rotate(360deg);
+        transform: scaleX(1);
       }
     }
     .hidden {
