@@ -281,7 +281,9 @@
           testimonials.forEach((_, index) => {
             const dot = document.createElement("button");
             dot.type = "button";
-            dot.className = index === (currentIndex % testimonials.length) ?
+            const logicalIndex = (currentIndex - visibleCount() +
+              testimonials.length) % testimonials.length;
+            dot.className = index === logicalIndex ?
               "testimonial-dot active" :
               "testimonial-dot";
             dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
