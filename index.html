@@ -281,9 +281,13 @@
 
         const setPosition = (animate) => {
           const count = visibleCount();
-          const offset = currentIndex * (100 / count);
+          const containerWidth = track.parentElement.clientWidth;
+          const gap = 24;
+          const cardWidth = (containerWidth - gap * (count - 1)) / count;
+          const step = cardWidth + gap;
+          const offset = currentIndex * step;
           track.classList.toggle("is-sliding", animate);
-          track.style.transform = `translate3d(-${offset}%, 0, 0)`;
+          track.style.transform = `translate3d(-${offset}px, 0, 0)`;
         };
 
         const render = () => {
