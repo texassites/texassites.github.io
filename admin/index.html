@@ -255,52 +255,6 @@
     const PUBLIC_TESTIMONIALS_URL =
       "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json";
 
-    const PENDING_TESTIMONIALS_KEY =
-      "texasSitesPendingTestimonials";
-
-    function getPendingTestimonials() {
-      try {
-        const stored = JSON.parse(
-          localStorage.getItem(PENDING_TESTIMONIALS_KEY) || "[]"
-        );
-
-        return Array.isArray(stored) ? stored : [];
-      } catch (error) {
-        console.error("Pending testimonials storage error:", error);
-        return [];
-      }
-    }
-
-    function savePendingTestimonials(items) {
-      localStorage.setItem(
-        PENDING_TESTIMONIALS_KEY,
-        JSON.stringify(items)
-      );
-    }
-
-    function addPendingTestimonial(site, id) {
-      const pending = getPendingTestimonials();
-
-      if (!pending.some((item) => item.site === site && item.id === id)) {
-        pending.push({site, id});
-        savePendingTestimonials(pending);
-      }
-    }
-
-    function removePendingTestimonial(site, id) {
-      const pending = getPendingTestimonials().filter(
-          (item) => !(item.site === site && item.id === id)
-      );
-
-      savePendingTestimonials(pending);
-    }
-
-    function isPendingTestimonial(site, id) {
-      return getPendingTestimonials().some(
-          (item) => item.site === site && item.id === id
-      );
-    }
-
     function escapeHtml(value) {
       return String(value)
           .replace(/&/g, "&amp;")
@@ -343,13 +297,74 @@
       return JSON.stringify(expected) === JSON.stringify(actual);
     }
 
+    function testimonialMatchesById(item, publicTestimonials) {
+      const publicItem = publicTestimonials.find(
+          (candidate) => String(candidate.id) === String(item.id)
+      );
+
+      if (!publicItem) {
+        return false;
+      }
+
+      return JSON.stringify({
+        id: item.id,
+        customerName: item.customerName,
+        testimonial: item.testimonial,
+        created: item.created,
+        published: item.published
+      }) === JSON.stringify({
+        id: publicItem.id,
+        customerName: publicItem.customerName,
+        testimonial: publicItem.testimonial,
+        created: publicItem.created,
+        published: publicItem.published
+      });
+    }
+
+    async function getPublicTestimonials(site) {
+      const response = await fetch(PUBLIC_TESTIMONIALS_URL, {
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to check website status.");
+      }
+
+      const allTestimonials = await response.json();
+
+      return Array.isArray(allTestimonials[site]) ?
+        allTestimonials[site] :
+        [];
+    }
+
+    function setTestimonialStatus(column, isLive) {
+      const status = column.querySelector("[data-testimonial-status]");
+
+      if (isLive) {
+        status.innerHTML =
+          '<span class="badge text-bg-success">Published</span>' +
+          '<span class="text-success" title="The public website has the latest testimonial.">✓ Live on website</span>';
+      } else {
+        status.innerHTML =
+          '<span class="badge text-bg-warning">Published</span>' +
+          '<span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>';
+      }
+    }
+
     async function waitForPublicTestimonial(
         authoritativeTestimonials,
         site,
-        testimonialId,
         column
     ) {
-      const status = column.querySelector("[data-testimonial-status]");
+      const item = authoritativeTestimonials.find(
+          (candidate) => String(candidate.id) ===
+            String(column.dataset.testimonialId)
+      );
+
+      if (!item) {
+        return;
+      }
+
       const maxAttempts = 30;
       let attempt = 0;
 
@@ -357,33 +372,23 @@
         attempt += 1;
 
         try {
-          const response = await fetch(PUBLIC_TESTIMONIALS_URL);
-
-          if (!response.ok) {
-            throw new Error("Unable to check website status.");
-          }
-
-          const allTestimonials = await response.json();
-          const publicTestimonials = Array.isArray(allTestimonials[site])
-            ? allTestimonials[site]
-            : [];
-
-          if (testimonialsMatch(
-              authoritativeTestimonials,
+          const publicTestimonials = await getPublicTestimonials(site);
+          const isLive = testimonialMatchesById(
+              item,
               publicTestimonials
-          )) {
-            removePendingTestimonial(site, testimonialId);
+          );
 
-            status.innerHTML =
-              '<span class="badge text-bg-success">Published</span>' +
-              '<span class="text-success" title="The public website has the latest testimonials.">✓ Live on website</span>';
-            return;
-          }
+          setTestimonialStatus(column, isLive);
 
-          if (attempt >= maxAttempts) {
-            status.innerHTML =
-              '<span class="badge text-bg-warning">Published</span>' +
-              '<span class="text-secondary">Website update is taking longer than expected.</span>';
+          if (isLive || attempt >= maxAttempts) {
+            if (!isLive) {
+              const status = column.querySelector(
+                  "[data-testimonial-status]"
+              );
+              status.innerHTML =
+                '<span class="badge text-bg-warning">Published</span>' +
+                '<span class="text-secondary">Website update is taking longer than expected.</span>';
+            }
             return;
           }
 
@@ -392,6 +397,9 @@
           console.error("Website sync check error:", error);
 
           if (attempt >= maxAttempts) {
+            const status = column.querySelector(
+                "[data-testimonial-status]"
+            );
             status.innerHTML =
               '<span class="badge text-bg-warning">Published</span>' +
               '<span class="text-secondary">Website update is taking longer than expected.</span>';
@@ -410,20 +418,22 @@
         prepend = false,
         authoritativeTestimonials = null,
         site = "",
-        isPending = false
+        isLive = true
     ) {
       const column = document.createElement("div");
       column.className = "col-12 col-md-6 col-lg-4";
+      column.dataset.testimonialId = item.id;
 
       column.innerHTML = `
         <article class="testimonial-card p-4">
           <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
             <h3 class="h5 mb-0">${escapeHtml(item.customerName)}</h3>
             <span class="testimonial-status" data-testimonial-status>
-              ${isPending ?
+              ${isLive ?
+                '<span class="badge text-bg-success">Published</span>' +
+                '<span class="text-success" title="The public website has the latest testimonial.">✓ Live on website</span>' :
                 '<span class="badge text-bg-warning">Published</span>' +
-                '<span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>' :
-                '<span class="badge text-bg-success">Published</span>'}
+                '<span class="sync-spinner" aria-label="Waiting for website update" title="Waiting for website update"></span>'}
             </span>
           </div>
 
@@ -443,11 +453,10 @@
         testimonialsGrid.appendChild(column);
       }
 
-      if (isPending && authoritativeTestimonials) {
+      if (!isLive && authoritativeTestimonials) {
         waitForPublicTestimonial(
           authoritativeTestimonials,
           site,
-          item.id,
           column
         );
       }
@@ -494,19 +503,20 @@
           return;
         }
 
-        const pendingTestimonials = getPendingTestimonials();
+        const publicTestimonials = await getPublicTestimonials(site);
 
         testimonials.slice().reverse().forEach((item) => {
-          const isPending = pendingTestimonials.some(
-              (pending) => pending.site === site && pending.id === item.id
+          const isLive = testimonialMatchesById(
+              item,
+              publicTestimonials
           );
 
           renderTestimonialCard(
             item,
             false,
-            isPending ? testimonials : null,
+            testimonials,
             site,
-            isPending
+            isLive
           );
         });
       } catch (error) {
@@ -641,8 +651,6 @@
 
         const addedTestimonial = result.testimonial;
 
-        addPendingTestimonial(result.site, addedTestimonial.id);
-
         testimonialForm.reset();
 
         testimonialsEmpty.classList.add("hidden");
@@ -667,12 +675,21 @@
           );
         }
 
+        const publicTestimonials = await getPublicTestimonials(
+            result.site
+        );
+
+        const isLive = testimonialMatchesById(
+            addedTestimonial,
+            publicTestimonials
+        );
+
         renderTestimonialCard(
           addedTestimonial,
           true,
           verifyResult.testimonials,
           result.site,
-          true
+          isLive
         );
       } catch (error) {
         console.error("Add testimonial error:", error);
