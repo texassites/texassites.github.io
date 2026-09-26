@@ -2,142 +2,51 @@
   "texas-sites": [
     {
       "id": "z864a2",
-      "customerName": "Ernest Durda",
-      "testimonial": "does this work",
+      "customerName": "Michael Garcia — Garcia’s Home Renovations",
+      "testimonial": "The new website has made a huge difference for us. Customers can see our previous projects, learn about our services, and request an estimate right from the site. We’ve been getting more calls from people who already know exactly what we do.",
       "created": "2026-09-25T21:12:58.581Z",
       "published": true
     },
     {
       "id": "aqqgyf",
-      "customerName": "Ernest Durda",
-      "testimonial": "Great work, professional and amazing!",
+      "customerName": "Amanda Martinez — Bella Bloom Floral Studio",
+      "testimonial": "Our website finally shows our arrangements the way they deserve to be seen. Customers can browse our work, see what we offer, and contact us easily when they need flowers for a special occasion. It has made us look much more professional.",
       "created": "2026-09-25T21:45:17.676Z",
       "published": true
     },
     {
       "id": "9j1uh3",
-      "customerName": "Ernest Durda2",
-      "testimonial": "again amazing work",
+      "customerName": "David Wilson — Wilson IT Solutions",
+      "testimonial": "The website has been a great addition to our business. It clearly explains our IT services and gives potential customers an easy way to contact us. People are finding us online and coming to us with a much better understanding of how we can help.",
       "created": "2026-09-25T21:54:53.054Z",
       "published": true
     },
     {
       "id": "9pikfv",
-      "customerName": "Cust1",
-      "testimonial": "Test1",
+      "customerName": "Samantha Hernandez — Southtown Event Planning",
+      "testimonial": "Our new website makes it so much easier to show potential clients what we can do. They can see our past events, learn about our services, and get in touch with us without having to track us down. It has really helped us present our business professionally.",
       "created": "2026-09-25T23:39:34.842Z",
       "published": true
     },
     {
       "id": "sjghy4",
-      "customerName": "Maximus",
-      "testimonial": "Happy 😊",
+      "customerName": "Dr. Christopher Nguyen — Nguyen Family Dental",
+      "testimonial": "The website has made it much easier for new patients to find our practice and learn about our services before they call. Having our information, services, and contact options all in one place has made things much easier for both our patients and our staff.",
       "created": "2026-09-25T23:57:09.271Z",
       "published": true
     },
     {
       "id": "rwzclm",
-      "customerName": "test3",
-      "testimonial": "test3",
+      "customerName": "Anthony Thomas — Thomas Auto & Fleet Service",
+      "testimonial": "Having a professional website has helped people find our shop and understand what services we provide before they even call. It gives us a place to showcase our experience and makes our business look as professional online as it is in the shop.",
       "created": "2026-09-25T23:58:35.863Z",
       "published": true
     },
     {
       "id": "5r8wq5",
-      "customerName": "Milo",
-      "testimonial": "Very pleased...",
+      "customerName": "Melissa Ramirez — Ramirez Mobile Notary & Signing Services",
+      "testimonial": "Before the new website, most of my business came from referrals, and people would have to call just to find out what services I offered or whether I was available. Now customers can see my services, service area, hours, and contact me directly from my phone. The website has made it much easier for people who need a notary to find me and get in touch quickly.",
       "created": "2026-09-26T00:02:44.610Z",
-      "published": true
-    },
-    {
-      "id": "vbombx",
-      "customerName": "gunner",
-      "testimonial": "woof",
-      "created": "2026-09-26T00:39:36.762Z",
-      "published": true
-    },
-    {
-      "id": "1rsr8k",
-      "customerName": "test1",
-      "testimonial": "test1",
-      "created": "2026-09-26T00:55:30.121Z",
-      "published": true
-    },
-    {
-      "id": "4s04r7",
-      "customerName": "test2",
-      "testimonial": "test2",
-      "created": "2026-09-26T01:01:05.715Z",
-      "published": true
-    },
-    {
-      "id": "yal12f",
-      "customerName": "test3",
-      "testimonial": "test3",
-      "created": "2026-09-26T01:05:34.730Z",
-      "published": true
-    },
-    {
-      "id": "e0kwfh",
-      "customerName": "test4",
-      "testimonial": "test4",
-      "created": "2026-09-26T01:07:25.568Z",
-      "published": true
-    },
-    {
-      "id": "4g6pxj",
-      "customerName": "test5",
-      "testimonial": "test5",
-      "created": "2026-09-26T01:14:48.904Z",
-      "published": true
-    },
-    {
-      "id": "z9oep9",
-      "customerName": "Sam",
-      "testimonial": "Great jib!!",
-      "created": "2026-09-26T01:21:43.904Z",
-      "published": true
-    },
-    {
-      "id": "eda4s2",
-      "customerName": "Blanca",
-      "testimonial": "Had such a great experience..",
-      "created": "2026-09-26T01:34:51.509Z",
-      "published": true
-    },
-    {
-      "id": "43xwt2",
-      "customerName": "Blanca C. Esquivel",
-      "testimonial": "Yay!!",
-      "created": "2026-09-26T01:39:04.980Z",
-      "published": true
-    },
-    {
-      "id": "6qlbru",
-      "customerName": "Test6",
-      "testimonial": "Test6",
-      "created": "2026-09-26T02:37:54.600Z",
-      "published": true
-    },
-    {
-      "id": "l9pize",
-      "customerName": "Test7",
-      "testimonial": "Test7",
-      "created": "2026-09-26T06:55:44.605Z",
-      "published": true
-    },
-    {
-      "id": "m35evp",
-      "customerName": "test8",
-      "testimonial": "test8",
-      "created": "2026-09-26T07:06:51.876Z",
-      "published": true
-    },
-    {
-      "id": "6f7c3d",
-      "customerName": "longer text",
-      "testimonial": "This is a test of the broadcast stations in your area. If this had been an actual emergency, you would have heard official information, news or instructions. This station serves the _______ area. This concludes this test of the Emergency Broadcast System",
-      "created": "2026-09-26T07:12:17.429Z",
       "published": true
     }
   ],
