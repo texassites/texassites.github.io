@@ -77,8 +77,10 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   flex:0 0 auto;
   min-height:250px;
   padding:30px;
-  border:1px solid var(--line);
-  background:rgba(247,240,228,.55);
+  border:1px solid rgba(45,45,40,.20);
+  border-radius:4px;
+  background:#f1e6d5;
+  box-shadow:0 5px 18px rgba(45,45,40,.08);
 }
 .testimonial-name {
   margin:0 0 22px;
