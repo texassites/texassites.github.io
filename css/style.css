@@ -72,7 +72,7 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 }
 .testimonial-item {
   position:relative;
-  flex:0 0 calc((100vw - 48px - 48px) / 3);
+  flex:0 0 auto;
   min-height:250px;
   padding:34px 30px 30px;
   border:1px solid var(--line);
@@ -87,7 +87,7 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 .testimonial-dot.active { width:24px; border-radius:99px; background:var(--red); }
 @media (max-width:767.98px) {
   .testimonial-track { gap:0; }
-  .testimonial-item { flex-basis:100vw; min-height:230px; padding:30px 26px; }
+  .testimonial-item { min-height:230px; padding:30px 26px; }
   .testimonial-item blockquote { font-size:21px; }
 }
 @media (prefers-reduced-motion:reduce) {
