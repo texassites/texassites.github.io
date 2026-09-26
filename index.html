@@ -286,6 +286,11 @@
           const cardWidth = (containerWidth - gap * (count - 1)) / count;
           const step = cardWidth + gap;
           const offset = currentIndex * step;
+
+          track.querySelectorAll(".testimonial-item").forEach((card) => {
+            card.style.flexBasis = `${cardWidth}px`;
+          });
+
           track.classList.toggle("is-sliding", animate);
           track.style.transform = `translate3d(-${offset}px, 0, 0)`;
         };
