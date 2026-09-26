@@ -1,11 +1,6 @@
-/* =========================================================================
-   AMPLIFY — main.js
-   Vanilla JS only. Each feature is a guard-claused init function.
-   ========================================================================= */
 (function () {
   "use strict";
 
-  /* ---------------------------------------------- sticky header shadow */
   function initHeader() {
     var header = document.querySelector(".site-header");
     if (!header) return;
@@ -16,7 +11,6 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------------------------------------------- mobile navigation */
   function initMobileNav() {
     var toggle = document.getElementById("navToggle");
     var panel = document.getElementById("navPanel");
@@ -26,68 +20,42 @@
       panel.classList.remove("open");
       toggle.setAttribute("aria-expanded", "false");
     };
-    var open = function () {
-      panel.classList.add("open");
-      toggle.setAttribute("aria-expanded", "true");
-    };
-
     toggle.addEventListener("click", function () {
-      if (panel.classList.contains("open")) { close(); } else { open(); }
+      var open = panel.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-
-    // close after choosing a destination
     panel.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", close);
     });
-
-    // esc to close
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") close();
     });
-
-    // reset when we grow past the mobile breakpoint
     window.addEventListener("resize", function () {
       if (window.innerWidth > 900) close();
     });
   }
 
-  /* ---------------------------------------------- tracklist play toggle */
-  function initTracks() {
-    var tracks = document.querySelectorAll("[data-track]");
-    if (!tracks.length) return;
-
-    var stop = function (row) {
-      row.classList.remove("is-playing");
-      var btn = row.querySelector(".track-play");
-      if (btn) btn.setAttribute("aria-pressed", "false");
-    };
-
-    tracks.forEach(function (row) {
-      var btn = row.querySelector(".track-play");
-      if (!btn) return;
-      btn.addEventListener("click", function () {
-        var playing = row.classList.contains("is-playing");
-        // only one track "plays" at a time
-        tracks.forEach(stop);
-        if (!playing) {
-          row.classList.add("is-playing");
-          btn.setAttribute("aria-pressed", "true");
-        }
+  function initServices() {
+    var rows = document.querySelectorAll(".track");
+    if (!rows.length) return;
+    rows.forEach(function (row) {
+      row.addEventListener("mouseenter", function () {
+        row.classList.add("service-active");
+      });
+      row.addEventListener("mouseleave", function () {
+        row.classList.remove("service-active");
       });
     });
   }
 
-  /* ---------------------------------------------- video click-to-reveal */
-  function initVideo() {
+  function initProject() {
     var stage = document.getElementById("videoStage");
     if (!stage) return;
-
     var play = function () {
       if (stage.classList.contains("is-live")) return;
       stage.classList.add("is-live");
-      stage.setAttribute("aria-label", "Sundown Static music video is now playing");
+      stage.setAttribute("aria-label", "Modern Repairs featured project details");
     };
-
     stage.addEventListener("click", play);
     stage.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
@@ -97,30 +65,10 @@
     });
   }
 
-  /* ---------------------------------------------- merch add-to-cart flash */
-  function initMerch() {
-    var buttons = document.querySelectorAll(".merch-add");
-    if (!buttons.length) return;
-
-    buttons.forEach(function (btn) {
-      var original = btn.getAttribute("aria-label") || "Add to cart";
-      var timer;
-      btn.addEventListener("click", function () {
-        btn.classList.add("added");
-        btn.setAttribute("aria-label", "Added to cart");
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          btn.classList.remove("added");
-          btn.setAttribute("aria-label", original);
-        }, 1600);
-      });
-    });
-  }
-
-  /* ---------------------------------------------- newsletter validation */
   function initSignup() {
     var form = document.getElementById("signupForm");
     if (!form) return;
+
     var ok = document.getElementById("signupOk");
     var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -134,14 +82,22 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var name = form.querySelector('[name="name"]');
+      var phone = form.querySelector('[name="phone"]');
       var email = form.querySelector('[name="email"]');
+      var project = form.querySelector('[name="project"]');
       var valid = true;
 
-      if (!name.value.trim()) { setError("name", "Please tell us your name."); valid = false; }
+      if (!name.value.trim()) { setError("name", "Please enter your name."); valid = false; }
       else { setError("name", ""); }
+
+      if (!phone.value.trim()) { setError("phone", "Please enter a phone number."); valid = false; }
+      else { setError("phone", ""); }
 
       if (!emailRe.test(email.value.trim())) { setError("email", "Enter a valid email address."); valid = false; }
       else { setError("email", ""); }
+
+      if (!project.value.trim()) { setError("project", "Tell us what needs attention."); valid = false; }
+      else { setError("project", ""); }
 
       if (!valid) {
         var firstBad = form.querySelector('[aria-invalid="true"]');
@@ -150,22 +106,19 @@
         return;
       }
 
-      // front-end only — wire the action to your provider to go live
       form.reset();
       if (ok) ok.classList.add("show");
     });
 
-    // clear an error as the visitor corrects it
-    form.querySelectorAll("input").forEach(function (input) {
-      input.addEventListener("input", function () {
-        if (input.getAttribute("aria-invalid") === "true") {
-          setError(input.getAttribute("name"), "");
+    form.querySelectorAll("input, textarea").forEach(function (field) {
+      field.addEventListener("input", function () {
+        if (field.getAttribute("aria-invalid") === "true") {
+          setError(field.getAttribute("name"), "");
         }
       });
     });
   }
 
-  /* ---------------------------------------------- scroll reveal */
   function initReveal() {
     var els = document.querySelectorAll(".reveal");
     if (!els.length) return;
@@ -188,13 +141,11 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------------------------------------------- boot */
   function boot() {
     initHeader();
     initMobileNav();
-    initTracks();
-    initVideo();
-    initMerch();
+    initServices();
+    initProject();
     initSignup();
     initReveal();
   }
