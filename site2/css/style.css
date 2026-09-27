@@ -37,6 +37,10 @@ p{margin:0 0 1rem}
 .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.4rem;margin-bottom:clamp(2rem,5vw,3.2rem)}
 .sec-head h2{font-size:clamp(2.5rem,7vw,5rem)}
 .sec-head p{color:var(--mauve);max-width:42ch;margin:0}
+.area-head-copy{display:grid;gap:.8rem;justify-items:start;max-width:42ch}
+.map-link{display:inline-flex;align-items:center;gap:.45rem;color:var(--paper);font:700 .72rem/1 "DM Mono",monospace;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;border-bottom:1px solid var(--coral);padding-bottom:.28rem;transition:color .2s ease,border-color .2s ease}
+.map-link svg{width:15px;height:15px}
+.map-link:hover{color:var(--coral-2);border-color:var(--coral-2)}
 
 .btn-amp{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--ff-body);font-weight:700;font-size:.92rem;letter-spacing:.01em;line-height:1;padding:.95rem 1.5rem;border-radius:100px;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);background:var(--coral);color:#241009;box-shadow:0 10px 30px -12px var(--glow-coral)}
 .btn-amp svg{width:17px;height:17px}.btn-amp:hover{transform:translateY(-2px);background:var(--coral-2)}.btn-amp:active{transform:translateY(0)}
