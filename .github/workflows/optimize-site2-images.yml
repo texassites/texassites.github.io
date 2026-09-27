@@ -9,6 +9,7 @@ on:
       - 'img/kithen-cabinet0install.jpg'
       - 'img/rustic-tools-sawdust-01.jpg'
       - 'img/wall-window-frame-work.jpg'
+      - '.github/workflows/optimize-site2-images.yml'
   workflow_dispatch:
 
 permissions:
