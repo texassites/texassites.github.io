@@ -179,3 +179,10 @@ p{margin:0 0 1rem}
  body{font-size:.98rem}.hero{padding-top:110px}.hero-actions .btn-amp{flex:1}.tour-row{grid-template-columns:70px 1fr;row-gap:.8rem}.tour-cta{grid-column:1/-1;justify-self:start}.tour-date .d-day{font-size:1.4rem}.track{grid-template-columns:44px 1fr auto;gap:.7rem}.track-title{grid-column:2}.track-time{grid-column:3}.form-row{flex-direction:column}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}
 }
 @media(max-width:420px){.merch-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.sec-head h2{font-size:2.3rem}}
+
+.back-to-top{position:fixed;right:24px;bottom:24px;z-index:1000;display:flex;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:1px solid var(--line-2);border-radius:50%;background:var(--ink-2);color:var(--paper);box-shadow:0 6px 18px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s ease,visibility .25s ease,transform .25s ease,background .2s ease;cursor:pointer}
+.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{background:var(--coral)}
+.back-to-top svg{width:19px;height:19px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:700px){.back-to-top{right:16px;bottom:16px;width:44px;height:44px}}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
