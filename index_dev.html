@@ -38,11 +38,12 @@
       .pricing-package-price { color:var(--red); font-family:Fraunces,Georgia,serif; font-size:36px; white-space:nowrap; }
       .package-card { max-width:1050px; margin:24px auto 0; padding:34px; border:1px solid rgba(49,88,103,.18); background:var(--navy); color:var(--cream); }.package-card .eyebrow { margin-bottom:12px; color:#e0a08e; }.package-card h3 { margin:0 0 12px; color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:34px; font-weight:500; }.package-card > p { max-width:720px; margin:0 0 24px; color:rgba(247,240,228,.72); font-size:14px; line-height:1.65; }.package-list { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 28px; }.package-list li { position:relative; padding-left:21px; color:rgba(247,240,228,.9); font-size:13px; line-height:1.55; }.package-list li::before { content:"✓"; position:absolute; left:0; color:#e0a08e; font-weight:700; }.package-highlight { margin-top:25px; padding-top:20px; border-top:1px solid rgba(247,240,228,.18); display:flex; justify-content:space-between; align-items:end; gap:20px; }.package-price-label { color:rgba(247,240,228,.62); font-size:11px; text-transform:uppercase; letter-spacing:.12em; }.package-price { color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:42px; line-height:1; }.package-price small { font-family:"DM Sans",sans-serif; font-size:12px; color:rgba(247,240,228,.6); }
       @media (max-width:767.98px) {
-        .pricing-chart { height:330px; gap:6px; padding:0 4px 42px 48px; align-items:stretch; }
+        .pricing-chart { height:330px; gap:12px; padding:0 4px 42px 48px; align-items:stretch; }
         .pricing-chart::before { left:48px; right:4px; bottom:42px; height:calc(100% - 42px); background:repeating-linear-gradient(to bottom, transparent 0, transparent 24.5%, rgba(45,45,40,.10) 24.5%, rgba(45,45,40,.10) 25%); }
+        .pricing-chart::after { content:""; position:absolute; top:0; bottom:42px; left:calc(48px + (100% - 52px) * .2); border-left:1px dashed rgba(45,45,40,.22); pointer-events:none; }
         .pricing-axis { width:42px; top:0; bottom:42px; font-size:9px; }
         .pricing-bar-item { height:100%; justify-content:flex-end; }
-        .pricing-bar { width:100%; max-width:none; flex:none; }
+        .pricing-bar { width:72%; max-width:none; flex:none; }
         .pricing-bar-value { flex:none; margin-bottom:7px; font-size:10px; line-height:1; }
         .pricing-bar-label { flex:none; width:100%; height:34px; margin-top:8px; font-size:10px; line-height:1.15; white-space:normal; text-align:center; display:flex; align-items:flex-start; justify-content:center; }
         .pricing-package-strip { display:block; padding:22px; }
