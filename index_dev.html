@@ -28,8 +28,8 @@
       .pricing-axis { position:absolute; left:0; top:0; bottom:0; width:56px; display:flex; flex-direction:column; justify-content:space-between; padding:0 0 0; color:#676d64; font-size:11px; }
       .pricing-bar-item { position:relative; z-index:1; flex:1; min-width:0; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; }
       .pricing-bar-value { margin-bottom:8px; color:var(--navy); font-size:12px; font-weight:700; }
-      .pricing-bar { width:100%; max-width:170px; min-height:12px; border-radius:12px 12px 0 0; background:var(--navy); }
-      .pricing-bar-item.texas-sites .pricing-bar { background:var(--red); }
+      .pricing-bar { width:100%; max-width:170px; min-height:12px; border-radius:12px 12px 0 0; background:var(--red); }
+      .pricing-bar-item.texas-sites .pricing-bar { background:var(--navy); }
       .pricing-bar-label { margin-top:10px; color:#4f554e; font-size:12px; text-align:center; white-space:nowrap; }
       .pricing-chart-note { margin:24px 0 0; color:#676d64; font-size:12px; line-height:1.55; text-align:center; }
       .pricing-package-strip { max-width:1050px; margin:34px auto 0; padding:24px 28px; border:1px solid var(--line); background:rgba(247,240,228,.55); display:flex; justify-content:space-between; align-items:center; gap:28px; }
@@ -202,6 +202,12 @@
                 <span>$1,600</span><span>$1,200</span><span>$800</span><span>$400</span><span>$0</span>
               </div>
 
+              <div class="pricing-bar-item texas-sites">
+                <span class="pricing-bar-value">$500</span>
+                <div class="pricing-bar" style="height:31.25%;"></div>
+                <span class="pricing-bar-label">Texas Sites</span>
+              </div>
+
               <div class="pricing-bar-item">
                 <span class="pricing-bar-value">$1,300</span>
                 <div class="pricing-bar" style="height:81.25%;"></div>
@@ -224,12 +230,6 @@
                 <span class="pricing-bar-value">$1,180</span>
                 <div class="pricing-bar" style="height:73.75%;"></div>
                 <span class="pricing-bar-label">Statewide providers</span>
-              </div>
-
-              <div class="pricing-bar-item texas-sites">
-                <span class="pricing-bar-value">$500</span>
-                <div class="pricing-bar" style="height:31.25%;"></div>
-                <span class="pricing-bar-label">Texas Sites</span>
               </div>
             </div>
 
