@@ -90,17 +90,21 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 .templates-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
 .template-card { min-width:0; border:1px solid var(--line); background:#f1e6d5; box-shadow:0 5px 18px rgba(45,45,40,.07); overflow:hidden; }
 .template-card-featured { grid-column:span 2; }
-.template-preview { position:relative; aspect-ratio:16/10; overflow:hidden; background-color:var(--navy); background-image:url("../site2/img/cutting-wood-by-window.jpg"),url("../site2/img/guy-on-ladder-1.jpg"),url("../site2/img/kithen-cabinet0install.jpg"),url("../site2/img/rustic-tools-sawdust-01.jpg"); background-repeat:no-repeat; background-size:25% 100%,25% 100%,25% 100%,25% 100%; background-position:0 0,33.333% 0,66.666% 0,100% 0; }
-.template-preview img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; opacity:0; }
-.template-card-featured:hover .template-preview { background-size:26% 104%,26% 104%,26% 104%,26% 104%; background-position:0 50%,33.333% 50%,66.666% 50%,100% 50%; }
-.template-overlay { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:space-between; padding:20px; background:linear-gradient(180deg,transparent 45%,rgba(20,35,43,.82)); color:#fff8ee; }
-.template-overlay > span { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
-.template-button { display:inline-flex; align-items:center; gap:9px; padding:10px 15px; border-radius:99px; background:var(--red); color:#fff8ee; font-size:12px; font-weight:700; }
-.template-button span { font-size:17px; }
+.template-showcase { padding:28px; background:#eee3d0; }
+.template-showcase-main { position:relative; display:flex; justify-content:center; border:1px solid rgba(45,45,40,.18); border-radius:5px; background:#14111d; overflow:hidden; }
+.template-showcase-main img { display:block; width:min(100%,720px); height:auto; max-height:780px; object-fit:contain; object-position:top center; }
+.template-live-button { position:absolute; right:22px; bottom:22px; }
+.template-thumbnails { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:14px; }
+.template-thumb { padding:0; border:2px solid transparent; border-radius:4px; background:#14111d; overflow:hidden; cursor:pointer; transition:border-color .2s ease, transform .2s ease; }
+.template-thumb img { display:block; width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top center; }
+.template-thumb:hover { transform:translateY(-2px); }
+.template-thumb.is-active { border-color:var(--red); }
 .template-info { display:flex; justify-content:space-between; gap:24px; padding:22px 24px 25px; }
 .template-info h3 { margin:5px 0 0; color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:27px; font-weight:500; }
-.template-info p { max-width:260px; margin:4px 0 0; color:#636960; font-size:13px; line-height:1.55; }
+.template-info p { max-width:320px; margin:4px 0 0; color:#636960; font-size:13px; line-height:1.55; }
 .template-type { color:var(--red); font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+.template-button { display:inline-flex; align-items:center; gap:9px; padding:12px 17px; border-radius:99px; background:var(--red); color:#fff8ee; font-size:12px; font-weight:700; box-shadow:0 8px 18px rgba(45,45,40,.18); }
+.template-button span { font-size:17px; }
 .template-placeholder { aspect-ratio:16/10; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid var(--line); background:linear-gradient(135deg,rgba(49,88,103,.08),rgba(166,75,64,.07)); }
 .template-placeholder span { color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:58px; line-height:1; }
 .template-placeholder small { margin-top:10px; color:#7a7f76; font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
@@ -108,12 +112,21 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 @media (max-width:991.98px) {
   .templates-grid { grid-template-columns:repeat(2,1fr); }
   .template-card-featured { grid-column:span 2; }
+  .template-showcase { padding:22px; }
+  .template-showcase-main img { max-height:720px; }
 }
 @media (max-width:767.98px) {
   .templates-section { padding-top:76px; padding-bottom:76px; }
   .templates-grid { grid-template-columns:1fr; gap:18px; }
   .template-card-featured { grid-column:span 1; }
+  .template-showcase { padding:16px; }
+  .template-showcase-main img { width:100%; max-height:none; }
+  .template-live-button { right:12px; bottom:12px; padding:10px 13px; font-size:11px; }
+  .template-thumbnails { gap:8px; margin-top:10px; }
   .template-info { display:block; padding:20px; }
   .template-info p { max-width:none; margin-top:12px; }
   .template-card-coming .template-info { min-height:0; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .template-thumb { transition:none; }
 }
