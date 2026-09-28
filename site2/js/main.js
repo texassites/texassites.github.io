@@ -48,23 +48,6 @@
     });
   }
 
-  function initProject() {
-    var stage = document.getElementById("videoStage");
-    if (!stage) return;
-    var play = function () {
-      if (stage.classList.contains("is-live")) return;
-      stage.classList.add("is-live");
-      stage.setAttribute("aria-label", "Modern Repairs featured project details");
-    };
-    stage.addEventListener("click", play);
-    stage.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        play();
-      }
-    });
-  }
-
   function initSignup() {
     var form = document.getElementById("signupForm");
     if (!form) return;
@@ -145,7 +128,6 @@
     initHeader();
     initMobileNav();
     initServices();
-    initProject();
     initSignup();
     initReveal();
   }
