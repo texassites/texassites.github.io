@@ -22,41 +22,18 @@
 
     <style>
       .pricing-section { background:var(--sand); }
-      .pricing-intro { max-width:760px; color:#636960; font-size:15px; line-height:1.7; }
-      .pricing-chart { margin-top:46px; padding:34px; border:1px solid var(--line); background:rgba(247,240,228,.62); }
-      .pricing-chart-title { margin:0 0 8px; color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:28px; font-weight:500; }
-      .pricing-chart-note { margin:0 0 30px; color:#70756d; font-size:12px; line-height:1.6; }
-      .price-bars { display:flex; flex-direction:column; gap:17px; }
-      .price-row { display:grid; grid-template-columns:150px 1fr 78px; align-items:center; gap:14px; }
-      .price-label { color:#51584f; font-size:12px; font-weight:600; }
-      .price-track { height:30px; background:rgba(49,88,103,.10); overflow:hidden; }
-      .price-bar { height:100%; display:flex; align-items:center; padding:0 11px; background:var(--navy); color:#fff8ee; font-size:11px; font-weight:700; min-width:62px; }
-      .price-row.featured .price-label { color:var(--red); font-weight:700; }
-      .price-row.featured .price-bar { background:var(--red); }
-      .price-value { color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:20px; font-weight:500; text-align:right; }
-      .pricing-footnote { margin:25px 0 0; color:#777c73; font-size:11px; line-height:1.6; }
-      .package-card { margin-top:24px; padding:34px; border:1px solid rgba(49,88,103,.18); background:var(--navy); color:var(--cream); }
-      .package-card .eyebrow { margin-bottom:12px; color:#e0a08e; }
-      .package-card h3 { margin:0 0 12px; color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:34px; font-weight:500; }
-      .package-card > p { max-width:720px; margin:0 0 24px; color:rgba(247,240,228,.72); font-size:14px; line-height:1.65; }
-      .package-list { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 28px; }
-      .package-list li { position:relative; padding-left:21px; color:rgba(247,240,228,.9); font-size:13px; line-height:1.55; }
-      .package-list li::before { content:"✓"; position:absolute; left:0; color:#e0a08e; font-weight:700; }
-      .package-highlight { margin-top:25px; padding-top:20px; border-top:1px solid rgba(247,240,228,.18); display:flex; justify-content:space-between; align-items:end; gap:20px; }
-      .package-price-label { color:rgba(247,240,228,.62); font-size:11px; text-transform:uppercase; letter-spacing:.12em; }
-      .package-price { color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:42px; line-height:1; }
-      .package-price small { font-family:"DM Sans",sans-serif; font-size:12px; color:rgba(247,240,228,.6); }
-      @media (max-width:767.98px) {
-        .pricing-chart { padding:24px 18px; }
-        .price-row { grid-template-columns:105px 1fr 62px; gap:9px; }
-        .price-label { font-size:11px; }
-        .price-value { font-size:17px; }
-        .price-bar { padding:0 8px; font-size:10px; }
-        .package-card { padding:28px 22px; }
-        .package-list { grid-template-columns:1fr; }
-        .package-highlight { display:block; }
-        .package-price { margin-top:8px; }
-      }
+      .price-compass { position:relative; display:grid; grid-template-columns:1fr 260px 1fr; grid-template-rows:1fr 260px 1fr; gap:24px; align-items:stretch; max-width:1050px; margin:55px auto 0; }
+      .compass-card { min-height:205px; padding:28px; border:1px solid var(--line); background:rgba(247,240,228,.68); }
+      .compass-card h3 { margin:10px 0 9px; color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:27px; font-weight:500; }
+      .compass-card p { margin:0 0 18px; color:#676d64; font-size:12px; line-height:1.55; }
+      .compass-card strong { color:var(--red); font-size:11px; font-weight:700; }
+      .compass-direction { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--navy); color:var(--cream); font-size:11px; font-weight:700; }
+      .compass-north { grid-column:2; grid-row:1; }.compass-west { grid-column:1; grid-row:2; }.compass-east { grid-column:3; grid-row:2; }.compass-south { grid-column:2; grid-row:3; }
+      .compass-center { grid-column:2; grid-row:2; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; width:260px; height:260px; padding:28px; border:2px solid var(--red); border-radius:50%; background:var(--navy); color:var(--cream); text-align:center; box-shadow:0 12px 30px rgba(45,45,40,.14); }
+      .compass-center-label { color:#e0a08e; font-size:10px; font-weight:700; letter-spacing:.16em; }.compass-center strong { margin:7px 0 2px; color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:48px; font-weight:500; line-height:1; }.compass-center small { color:rgba(247,240,228,.7); font-size:11px; }.compass-rule { width:48px; margin:15px 0 11px; border-top:1px solid rgba(247,240,228,.28); }.compass-center > span:last-child { color:rgba(247,240,228,.82); font-size:10px; }
+      .regional-note { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1050px; margin:24px auto 0; padding:25px 28px; border:1px solid var(--line); background:rgba(247,240,228,.55); }.regional-note-label { display:block; margin-bottom:6px; color:var(--red); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }.regional-note strong { display:block; color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:24px; font-weight:500; }.regional-note p { margin:6px 0 0; color:#686e65; font-size:12px; line-height:1.55; }.regional-note-copy { padding-left:24px; border-left:1px solid var(--line); }.regional-note-copy > span { color:var(--navy); font-size:12px; font-weight:700; }
+      .package-card { max-width:1050px; margin:24px auto 0; padding:34px; border:1px solid rgba(49,88,103,.18); background:var(--navy); color:var(--cream); }.package-card .eyebrow { margin-bottom:12px; color:#e0a08e; }.package-card h3 { margin:0 0 12px; color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:34px; font-weight:500; }.package-card > p { max-width:720px; margin:0 0 24px; color:rgba(247,240,228,.72); font-size:14px; line-height:1.65; }.package-list { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 28px; }.package-list li { position:relative; padding-left:21px; color:rgba(247,240,228,.9); font-size:13px; line-height:1.55; }.package-list li::before { content:"✓"; position:absolute; left:0; color:#e0a08e; font-weight:700; }.package-highlight { margin-top:25px; padding-top:20px; border-top:1px solid rgba(247,240,228,.18); display:flex; justify-content:space-between; align-items:end; gap:20px; }.package-price-label { color:rgba(247,240,228,.62); font-size:11px; text-transform:uppercase; letter-spacing:.12em; }.package-price { color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:42px; line-height:1; }.package-price small { font-family:"DM Sans",sans-serif; font-size:12px; color:rgba(247,240,228,.6); }
+      @media (max-width:767.98px) { .price-compass { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto auto auto; gap:14px; margin-top:38px; }.compass-card { min-height:0; padding:20px; }.compass-card h3 { font-size:22px; }.compass-north { grid-column:1 / -1; grid-row:1; }.compass-west { grid-column:1; grid-row:2; }.compass-east { grid-column:2; grid-row:2; }.compass-center { grid-column:1 / -1; grid-row:3; width:210px; height:210px; justify-self:center; }.compass-south { grid-column:1 / -1; grid-row:4; }.regional-note { grid-template-columns:1fr; gap:18px; padding:22px; }.regional-note-copy { padding-left:0; padding-top:18px; border-left:0; border-top:1px solid var(--line); }.package-card { padding:28px 22px; }.package-list { grid-template-columns:1fr; }.package-highlight { display:block; }.package-price { margin-top:8px; } }
     </style>
 
   </head>
@@ -196,92 +173,30 @@
       <section class="section pricing-section" id="pricing">
         <div class="container">
           <div class="row align-items-end g-4">
-            <div class="col-lg-8">
-              <p class="eyebrow">A clearer way to look at the price</p>
-              <h2>What a small-business website can cost.</h2>
-            </div>
-            <div class="col-lg-4 section-heading-copy">
-              <p>We looked at published website prices from providers across Texas so you can see where a $500 website fits in the market.</p>
-            </div>
+            <div class="col-lg-8"><p class="eyebrow">Texas website pricing</p><h2>See where $500 sits across Texas.</h2></div>
+            <div class="col-lg-4 section-heading-copy"><p>A regional view of published website pricing, with Texas Sites right in the middle.</p></div>
           </div>
 
-          <div class="pricing-chart">
-            <h3 class="pricing-chart-title">Published website price examples</h3>
-            <p class="pricing-chart-note">Examples we found in our Texas market research. Prices and packages vary, so this is a visual comparison—not an apples-to-apples quote comparison.</p>
+          <div class="price-compass">
+            <div class="compass-card compass-north"><span class="compass-direction">N</span><h3>North Texas</h3><p>Dallas · Fort Worth · Denton · Amarillo · Wichita Falls</p><strong>Published market examples</strong></div>
+            <div class="compass-card compass-west"><span class="compass-direction">W</span><h3>West Texas</h3><p>El Paso · Midland · Odessa · Lubbock · Abilene · San Angelo</p><strong>Published market examples</strong></div>
+            <div class="compass-center"><span class="compass-center-label">TEXAS SITES</span><strong>$500</strong><small>Website package</small><div class="compass-rule"></div><span>Domain + hosting included</span></div>
+            <div class="compass-card compass-east"><span class="compass-direction">E</span><h3>East Texas</h3><p>Tyler · Longview · Texarkana · Beaumont · Nacogdoches</p><strong>Published market examples</strong></div>
+            <div class="compass-card compass-south"><span class="compass-direction">S</span><h3>South Texas</h3><p>San Antonio · Corpus Christi · Laredo · Rio Grande Valley · Brownsville</p><strong>Published examples: $960–$2,500</strong></div>
+          </div>
 
-            <div class="price-bars" role="img" aria-label="Texas Sites at 500 dollars compared with published website price examples ranging from 960 to 3800 dollars">
-              <div class="price-row featured">
-                <span class="price-label">Texas Sites</span>
-                <div class="price-track"><div class="price-bar" style="width:13.16%">Your site</div></div>
-                <span class="price-value">$500</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">Laredo example</span>
-                <div class="price-track"><div class="price-bar" style="width:25.26%">Published example</div></div>
-                <span class="price-value">$960</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">Central Texas</span>
-                <div class="price-track"><div class="price-bar" style="width:39.45%">Published example</div></div>
-                <span class="price-value">$1,499</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">South Texas</span>
-                <div class="price-track"><div class="price-bar" style="width:39.39%">Published example</div></div>
-                <span class="price-value">$1,497</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">San Antonio</span>
-                <div class="price-track"><div class="price-bar" style="width:39.47%">Published example</div></div>
-                <span class="price-value">$1,500</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">Corpus Christi</span>
-                <div class="price-track"><div class="price-bar" style="width:39.47%">Published example</div></div>
-                <span class="price-value">$1,500</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">South Texas</span>
-                <div class="price-track"><div class="price-bar" style="width:65.79%">Published example</div></div>
-                <span class="price-value">$2,500</span>
-              </div>
-              <div class="price-row">
-                <span class="price-label">Texas example</span>
-                <div class="price-track"><div class="price-bar" style="width:100%">Published example</div></div>
-                <span class="price-value">$3,800</span>
-              </div>
-            </div>
-
-            <p class="pricing-footnote">These are published prices/examples identified during our research, including starting prices where a provider advertised a starting point. Some providers also charge monthly hosting or other recurring fees.</p>
+          <div class="regional-note">
+            <div><span class="regional-note-label">Central Texas</span><strong>Published example: $1,499</strong><p>Austin · Waco · Temple · Killeen · Bryan · College Station · San Marcos</p></div>
+            <div class="regional-note-copy"><span>Why the comparison matters</span><p>The $500 Texas Sites package includes the domain registration and monthly hosting, rather than treating those as separate add-ons.</p></div>
           </div>
 
           <div class="package-card">
-            <p class="eyebrow">Texas Sites · $500 website package</p>
-            <h3>Everything you need to get online.</h3>
+            <p class="eyebrow">Texas Sites · $500 website package</p><h3>Everything you need to get online.</h3>
             <p>The $500 price is designed to be simple and predictable. Your domain registration and monthly hosting are part of the package, so the starting cost is not just the website design.</p>
-
             <ul class="package-list">
-              <li>Custom-designed small-business website</li>
-              <li>Mobile-responsive design</li>
-              <li>Business information and services</li>
-              <li>About / company story section</li>
-              <li>Testimonials section</li>
-              <li>Gallery or project showcase</li>
-              <li>Contact information and contact section</li>
-              <li>Basic search-engine-friendly setup</li>
-              <li>Domain registration included</li>
-              <li>Monthly hosting included</li>
-              <li>Website deployment and launch</li>
-              <li>Personal, direct design process</li>
+              <li>Custom-designed small-business website</li><li>Mobile-responsive design</li><li>Business information and services</li><li>About / company story section</li><li>Testimonials section</li><li>Gallery or project showcase</li><li>Contact information and contact section</li><li>Basic search-engine-friendly setup</li><li>Domain registration included</li><li>Monthly hosting included</li><li>Website deployment and launch</li><li>Personal, direct design process</li>
             </ul>
-
-            <div class="package-highlight">
-              <div>
-                <div class="package-price-label">Starting website package</div>
-                <div class="package-price">$500 <small>per site</small></div>
-              </div>
-              <a class="button" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a>
-            </div>
+            <div class="package-highlight"><div><div class="package-price-label">Starting website package</div><div class="package-price">$500 <small>per site</small></div></div><a class="button" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a></div>
           </div>
         </div>
       </section>
