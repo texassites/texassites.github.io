@@ -18,7 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/style.css?v=16">
+    <link rel="stylesheet" href="css/style.css?v=17">
   </head>
 
   <body>
@@ -165,19 +165,32 @@
 
           <div class="templates-grid">
             <article class="template-card template-card-featured">
-              <div class="template-preview">
-                <img src="https://raw.githubusercontent.com/texassites/texassites.github.io/main/site2/Screenshot%202026-09-15%20221123.png" alt="Preview of the Modern Repairs website template" loading="lazy">
-                <div class="template-overlay">
-                  <span>Template 01</span>
-                  <a class="template-button" href="site2/" aria-label="View the Modern Repairs website demo">View Demo <span aria-hidden="true">→</span></a>
+              <div class="template-showcase">
+                <div class="template-showcase-main">
+                  <img id="template-main-image" src="img/templates/site2-home.jpg" alt="Modern Repairs website home page preview">
+                  <a class="template-button template-live-button" href="site2/" aria-label="View the Modern Repairs live website">View Live Website <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="template-thumbnails" aria-label="Modern Repairs website screenshots">
+                  <button class="template-thumb is-active" type="button" data-template-image="img/templates/site2-home.jpg" data-template-alt="Modern Repairs website home page preview" aria-label="Show Modern Repairs home page">
+                    <img src="img/templates/site2-home.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="template-thumb" type="button" data-template-image="img/templates/site2-testimonials.jpg" data-template-alt="Modern Repairs testimonials page preview" aria-label="Show Modern Repairs testimonials page">
+                    <img src="img/templates/site2-testimonials.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="template-thumb" type="button" data-template-image="img/templates/site2-services.jpg" data-template-alt="Modern Repairs services page preview" aria-label="Show Modern Repairs services page">
+                    <img src="img/templates/site2-services.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="template-thumb" type="button" data-template-image="img/templates/site2-mobile.jpg" data-template-alt="Modern Repairs mobile website preview" aria-label="Show Modern Repairs mobile view">
+                    <img src="img/templates/site2-mobile.jpg" alt="" loading="lazy">
+                  </button>
                 </div>
               </div>
               <div class="template-info">
                 <div>
-                  <span class="template-type">Home Services</span>
+                  <span class="template-type">Template 01 · Home Services</span>
                   <h3>Modern Repairs</h3>
                 </div>
-                <p>A bold, modern service-business layout built to turn visitors into customers.</p>
+                <p>A bold, modern service-business website designed to look great on every screen.</p>
               </div>
             </article>
 
@@ -562,6 +575,24 @@
             render();
             restart();
           }, 150);
+        });
+      })();
+    </script>
+
+    <script>
+      (() => {
+        const mainImage = document.getElementById("template-main-image");
+        const thumbs = document.querySelectorAll(".template-thumb");
+        if (!mainImage || !thumbs.length) return;
+
+        thumbs.forEach((thumb) => {
+          thumb.addEventListener("click", () => {
+            mainImage.src = thumb.dataset.templateImage;
+            mainImage.alt = thumb.dataset.templateAlt;
+
+            thumbs.forEach((item) => item.classList.remove("is-active"));
+            thumb.classList.add("is-active");
+          });
         });
       })();
     </script>
