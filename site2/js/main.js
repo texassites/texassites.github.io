@@ -124,12 +124,29 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  function initBackToTop() {
+    var backToTop = document.getElementById("back-to-top");
+    if (!backToTop) return;
+
+    var update = function () {
+      backToTop.classList.toggle("is-visible", window.scrollY > 500);
+    };
+
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
   function boot() {
     initHeader();
     initMobileNav();
     initServices();
     initSignup();
     initReveal();
+    initBackToTop();
   }
 
   if (document.readyState === "loading") {
