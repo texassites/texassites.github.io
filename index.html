@@ -397,9 +397,22 @@
 
     <footer>
       <span>Texas Sites</span>
-      <span>Websites made with care, wherever you are.</span>
+      <span>Websites made with care, wherever you are. <time id="site-build-time" datetime=""></time></span>
       <span>2026</span>
     </footer>
+
+    <script>
+      (() => {
+        const buildTime = document.getElementById("site-build-time");
+        if (buildTime) {
+          const now = new Date();
+          const pad = (value, size = 2) => String(value).padStart(size, "0");
+          const stamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}.${pad(now.getMilliseconds(), 3)}`;
+          buildTime.dateTime = now.toISOString();
+          buildTime.textContent = stamp;
+        }
+      })();
+    </script>
 
     <script>
       (() => {
