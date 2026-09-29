@@ -551,6 +551,6 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 /* Raise the intro description so it sits closer to the maker block */
 @media (min-width:768px) {
   .intro-description {
-    transform:translateY(-72px);
+    transform:translateY(-145px);
   }
 }
