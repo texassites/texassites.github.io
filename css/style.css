@@ -616,3 +616,54 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 .services-wrap .row.g-4 > .col-md-4:nth-child(1) .service::before { content:"01" !important; }
 .services-wrap .row.g-4 > .col-md-4:nth-child(2) .service::before { content:"02" !important; }
 .services-wrap .row.g-4 > .col-md-4:nth-child(3) .service::before { content:"03" !important; }
+
+
+/* Texas warmth section palette */
+.intro { background:#fbf5ea; }
+
+.services-wrap {
+  background:#e9dcc6;
+  border-top:1px solid rgba(45,45,40,.10);
+  border-bottom:1px solid rgba(45,45,40,.12);
+}
+.services-wrap .section-heading-copy { color:#655f55; }
+.services-wrap .service:nth-child(1) { background:#f7eddd; }
+.services-wrap .service:nth-child(2) { background:#f3e6d2; }
+.services-wrap .service:nth-child(3) { background:#efe0ca; }
+
+.pricing-section {
+  background:#f5ead8;
+  border-bottom:1px solid rgba(45,45,40,.12);
+}
+.pricing-section .section-heading-copy { color:#6a665d; }
+
+.templates-section {
+  background:var(--navy);
+}
+
+.process-section {
+  background:#fbf3e5;
+  border-bottom:1px solid rgba(45,45,40,.10);
+}
+
+.contact {
+  background:#315867;
+  border-radius:4px;
+  box-shadow:0 18px 40px rgba(23,45,59,.18);
+}
+
+.testimonials-section {
+  background:#e6d5bc;
+  border-top:1px solid rgba(45,45,40,.10);
+  border-bottom:1px solid rgba(45,45,40,.12);
+}
+.testimonials-section .testimonial-item {
+  background:#f6ead8;
+}
+
+@media (max-width:767.98px) {
+  .services-wrap { background:#e9dcc6; }
+  .pricing-section { background:#f5ead8; }
+  .process-section { background:#fbf3e5; }
+  .testimonials-section { background:#e6d5bc; }
+}
