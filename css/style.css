@@ -241,3 +241,15 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
     text-align:center;
   }
 }
+
+
+/* Tighten intro section on larger screens */
+@media (min-width:768px) {
+  .intro {
+    padding-top:72px;
+    padding-bottom:72px;
+  }
+  .intro-layout {
+    row-gap:24px;
+  }
+}
