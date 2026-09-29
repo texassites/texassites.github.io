@@ -583,3 +583,22 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
     padding-bottom:58px;
   }
 }
+
+
+/* Pricing chart refinements */
+.pricing-group-heading strong { font-size:14px; }
+.pricing-bar-label { line-height:1.15; }
+@media (min-width:768px) {
+  .pricing-group.texas-group .pricing-group-heading strong { font-size:15px; }
+  .pricing-group.competitor-group .pricing-group-heading strong { font-size:14px; }
+}
+@media (max-width:767.98px) {
+  .pricing-group.texas-group .pricing-group-heading strong,
+  .pricing-group.competitor-group .pricing-group-heading strong {
+    font-size:11px;
+    letter-spacing:.10em;
+  }
+  .pricing-group { gap:6px; }
+  .pricing-bar { width:58%; }
+  .pricing-bar-label { font-size:10px; line-height:1.1; }
+}
