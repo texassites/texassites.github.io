@@ -606,5 +606,7 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 
 /* Service card refinements */
 .service { position:relative; }
-.service::before { content:none !important; }
 .service::after { content:none !important; }
+.service:nth-child(1)::before { content:"01" !important; }
+.service:nth-child(2)::before { content:"02" !important; }
+.service:nth-child(3)::before { content:"03" !important; }
