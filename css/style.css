@@ -551,6 +551,35 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 /* Raise the intro description so it sits closer to the maker block */
 @media (min-width:768px) {
   .intro-description {
-    transform:translateY(-145px);
+    margin-top:-145px;
+  }
+}
+
+
+/* Compact section rhythm — remove unused vertical space */
+@media (min-width:992px) {
+  .services-wrap .section {
+    padding-top:72px;
+    padding-bottom:78px;
+  }
+
+  .pricing-section {
+    padding-top:68px;
+    padding-bottom:74px;
+  }
+
+  .templates-section {
+    padding-top:82px;
+    padding-bottom:82px;
+  }
+
+  .process-section {
+    padding-top:70px;
+    padding-bottom:70px;
+  }
+
+  .testimonials-section {
+    padding-top:68px;
+    padding-bottom:58px;
   }
 }
