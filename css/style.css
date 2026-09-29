@@ -602,3 +602,9 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   .pricing-bar { width:58%; }
   .pricing-bar-label { font-size:10px; line-height:1.1; }
 }
+
+
+/* Service card refinements */
+.service { position:relative; }
+.service::before { content:none !important; }
+.service::after { content:none !important; }
