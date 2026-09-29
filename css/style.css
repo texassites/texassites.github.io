@@ -610,3 +610,9 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 .service:nth-child(1)::before { content:"01" !important; }
 .service:nth-child(2)::before { content:"02" !important; }
 .service:nth-child(3)::before { content:"03" !important; }
+
+
+/* Correct service card watermark targeting */
+.services-wrap .row.g-4 > .col-md-4:nth-child(1) .service::before { content:"01" !important; }
+.services-wrap .row.g-4 > .col-md-4:nth-child(2) .service::before { content:"02" !important; }
+.services-wrap .row.g-4 > .col-md-4:nth-child(3) .service::before { content:"03" !important; }
