@@ -765,3 +765,48 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
     padding:0;
   }
 }
+
+
+/* Fall Special launch modal */
+body.fall-special-open { overflow:hidden; }
+.fall-special-modal {
+  position:fixed; inset:0; z-index:3000;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px; background:rgba(18,28,32,.72);
+  animation:fallSpecialFadeIn .22s ease both;
+}
+.fall-special-modal.is-closing { animation:fallSpecialFadeOut .22s ease both; }
+.fall-special-dialog {
+  width:min(760px,94vw); padding:16px;
+  border:1px solid rgba(251,245,234,.35); border-radius:8px;
+  background:#fbf5ea; box-shadow:0 24px 70px rgba(0,0,0,.34);
+}
+.fall-special-dialog img { display:block; width:100%; height:auto; border-radius:4px; }
+.fall-special-ok { display:flex; margin:16px auto 2px; min-width:118px; justify-content:center; cursor:pointer; }
+@keyframes fallSpecialFadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes fallSpecialFadeOut { from {opacity:1;} to {opacity:0;} }
+@media (max-width:767.98px) {
+  .fall-special-modal { padding:16px; }
+  .fall-special-dialog { width:min(94vw,620px); padding:10px; }
+  .fall-special-ok { margin-top:12px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .fall-special-modal,.fall-special-modal.is-closing { animation:none; }
+}
+
+/* $500 package CTA alignment */
+.package-highlight-row {
+  margin-top:30px; padding-top:24px;
+  border-top:1px solid rgba(247,240,228,.18);
+  display:flex; align-items:center; justify-content:space-between; gap:28px;
+}
+.package-highlight-row .package-highlight {
+  margin-top:0; padding-top:0; border-top:0; flex:1 1 auto;
+}
+.package-highlight-row .pricing-start-button {
+  flex:0 0 auto; margin:0; white-space:nowrap;
+}
+@media (max-width:767.98px) {
+  .package-highlight-row { flex-direction:column; align-items:stretch; gap:16px; }
+  .package-highlight-row .pricing-start-button { align-self:flex-start; }
+}
