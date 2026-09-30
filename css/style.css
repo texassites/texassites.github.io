@@ -745,42 +745,23 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
   }
 }
 
-/* Fall special pricing artwork */
+/* Fall Special banner */
 .pricing-package-strip {
-  display:grid;
-  grid-template-columns:170px minmax(0,1fr);
-  align-items:center;
-  gap:24px;
-}
-.pricing-package-strip .fall-art {
-  width:170px;
-  height:130px;
-  object-fit:contain;
   display:block;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:hidden;
+  border-radius:4px;
 }
-.pricing-package-strip .fall-copy strong {
+.pricing-package-strip .fall-special-banner {
   display:block;
-}
-.pricing-package-strip .fall-copy .fall-label {
-  display:block;
-  margin-bottom:4px;
-  color:var(--red);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+  width:100%;
+  height:auto;
 }
 @media (max-width:767.98px) {
   .pricing-package-strip {
-    grid-template-columns:105px minmax(0,1fr);
-    gap:14px;
-    padding:18px 18px;
-  }
-  .pricing-package-strip .fall-art {
-    width:105px;
-    height:105px;
-  }
-  .pricing-package-strip .fall-copy .fall-label {
-    font-size:10px;
+    padding:0;
   }
 }
