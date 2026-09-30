@@ -3,23 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta
-      name="description"
-      content="Affordable, thoughtful websites for small businesses and independent makers."
-    >
+    <meta name="description" content="Affordable, thoughtful websites for small businesses and independent makers.">
     <title>Texas Sites | Affordable Websites</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
-      rel="stylesheet"
-    >
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=27">
-
     <style>
       .pricing-section { background:var(--sand); }
       .pricing-chart-wrap { max-width:1050px; margin:50px auto 0; }
@@ -44,7 +34,17 @@
       .pricing-package-strip strong { color:var(--navy); font-family:Fraunces,Georgia,serif; font-size:24px; font-weight:500; }
       .pricing-package-strip p { margin:5px 0 0; color:#686e65; font-size:12px; line-height:1.55; }
       .pricing-package-price { color:var(--red); font-family:Fraunces,Georgia,serif; font-size:36px; white-space:nowrap; }
-      .package-card { max-width:1050px; margin:24px auto 0; padding:34px; border:1px solid rgba(49,88,103,.18); background:var(--navy); color:var(--cream); }.package-card .eyebrow { margin-bottom:12px; color:#e0a08e; }.package-card h3 { margin:0 0 12px; color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:34px; font-weight:500; }.package-card > p { max-width:720px; margin:0 0 24px; color:rgba(247,240,228,.72); font-size:14px; line-height:1.65; }.package-list { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 28px; }.package-list li { position:relative; padding-left:21px; color:rgba(247,240,228,.9); font-size:13px; line-height:1.55; }.package-list li::before { content:"✓"; position:absolute; left:0; color:#e0a08e; font-weight:700; }.package-highlight { margin-top:25px; padding-top:20px; border-top:1px solid rgba(247,240,228,.18); display:flex; justify-content:space-between; align-items:end; gap:20px; }.package-price-label { color:rgba(247,240,228,.62); font-size:11px; text-transform:uppercase; letter-spacing:.12em; }.package-price { color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:42px; line-height:1; }.package-price small { font-family:"DM Sans",sans-serif; font-size:12px; color:rgba(247,240,228,.6); }
+      .package-card { max-width:1050px; margin:24px auto 0; padding:34px; border:1px solid rgba(49,88,103,.18); background:var(--navy); color:var(--cream); }
+      .package-card .eyebrow { margin-bottom:12px; color:#e0a08e; }
+      .package-card h3 { margin:0 0 12px; color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:34px; font-weight:500; }
+      .package-card > p { max-width:720px; margin:0 0 24px; color:rgba(247,240,228,.72); font-size:14px; line-height:1.65; }
+      .package-list { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 28px; }
+      .package-list li { position:relative; padding-left:21px; color:rgba(247,240,228,.9); font-size:13px; line-height:1.55; }
+      .package-list li::before { content:"✓"; position:absolute; left:0; color:#e0a08e; font-weight:700; }
+      .package-highlight { margin-top:25px; padding-top:20px; border-top:1px solid rgba(247,240,228,.18); display:flex; justify-content:space-between; align-items:end; gap:20px; }
+      .package-price-label { color:rgba(247,240,228,.62); font-size:11px; text-transform:uppercase; letter-spacing:.12em; }
+      .package-price { color:var(--cream); font-family:Fraunces,Georgia,serif; font-size:42px; line-height:1; }
+      .package-price small { font-family:"DM Sans",sans-serif; font-size:12px; color:rgba(247,240,228,.6); }
       @media (max-width:767.98px) {
         .pricing-chart { height:285px; grid-template-columns:42px 1fr 4fr; gap:8px; padding:0 4px 0 0; }
         .pricing-chart::before { left:0; right:4px; height:100%; }
@@ -59,647 +59,96 @@
         .pricing-bar-label { flex:none; width:100%; height:34px; margin-top:8px; font-size:10px; line-height:1.15; white-space:normal; text-align:center; display:flex; align-items:flex-start; justify-content:center; }
         .pricing-package-strip { display:block; padding:22px; }
         .pricing-package-price { margin-top:10px; }
-        .package-card { padding:28px 22px; }.package-list { grid-template-columns:1fr; }.package-highlight { display:block; }.package-price { margin-top:8px; }
-      }    </style>
-
+        .package-card { padding:28px 22px; }
+        .package-list { grid-template-columns:1fr; }
+        .package-highlight { display:block; }
+        .package-price { margin-top:8px; }
+      }
+    </style>
   </head>
-
   <body>
     <header class="hero" id="home">
       <img class="hero-image" src="img/flag.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
       <nav class="navbar navbar-expand-md site-nav" aria-label="Main navigation">
         <div class="container">
-          <a class="site-logo" href="#home" aria-label="Texas Sites">
-            <img src="img/tslogo2web3232.png" alt="Texas Sites">
-          </a>
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#nav-links"
-            aria-controls="nav-links"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
+          <a class="site-logo" href="#home" aria-label="Texas Sites"><img src="img/tslogo2web3232.png" alt="Texas Sites"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="nav-links">
             <div class="navbar-nav ms-auto align-items-md-center gap-md-4">
-              <a class="nav-link" href="#services">Services</a>
-              <a class="nav-link" href="#process">How it works</a>
-              <a class="nav-link" href="#templates">Templates</a>
-              <a class="nav-link" href="#pricing">Pricing</a>
-              <a class="nav-link" href="#testimonials">Testimonials</a>
-              <a class="nav-link" href="#contact">Let's talk</a>
+              <a class="nav-link" href="#services">Services</a><a class="nav-link" href="#process">How it works</a><a class="nav-link" href="#templates">Templates</a><a class="nav-link" href="#pricing">Pricing</a><a class="nav-link" href="#testimonials">Testimonials</a><a class="nav-link" href="#contact">Let's talk</a>
             </div>
           </div>
         </div>
       </nav>
-
       <div class="container hero-content">
         <p class="eyebrow">Websites Made With Care</p>
         <h1>A warm welcome for your corner of the internet.</h1>
-        <p class="hero-copy">
-          Thoughtful, modern websites for small businesses, makers, and people with good ideas.
-          Clear pricing. No fuss. A digital home that feels like you.
-        </p>
+        <p class="hero-copy">Thoughtful, modern websites for small businesses, makers, and people with good ideas. Clear pricing. No fuss. A digital home that feels like you.</p>
         <a class="button" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a>
       </div>
     </header>
-
     <main>
-      <section class="section intro">
-        <div class="container">
-          <div class="intro-layout">
-            <div class="intro-heading">
-              <p class="eyebrow">The good stuff</p>
-              <h2>Small studio energy. Big-picture thinking.</h2>
-            </div>
-
-            <div class="maker intro-maker">
-              <img src="img/ern.png" alt="Ern smiling in sunglasses">
-              <div>
-                <strong>Meet the maker</strong>
-                <p>
-                  Hi, I'm Ernest. I build affordable websites that feel personal, useful, and easy to share.
-                </p>
-              </div>
-            </div>
-
-            <div class="intro-copy intro-description">
-              <p>
-                We build websites that are easy to use and aligned with your brand. Through clear
-                strategy, thoughtful design, and a human touch, we create sites that welcome visitors
-                and help your business stand out.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="services-wrap" id="services">
-        <div class="container section">
-          <div class="row align-items-end g-4 mb-5">
-            <div class="col-lg-8">
-              <p class="eyebrow">What we make</p>
-              <h2>Built for where you are going.</h2>
-            </div>
-            <div class="col-lg-4 section-heading-copy">
-              <p>Start with what you need today. Grow into what comes next.</p>
-            </div>
-          </div>
-
-          <div class="row g-4">
-            <div class="col-md-4">
-              <article class="service h-100">
-                <span>01 / NEW WEBSITE</span>
-                <h3>New Website Build </h3>
-                <p>A polished online home base that’s easy to use and unmistakably yours.</p>
-              </article>
-            </div>
-
-            <div class="col-md-4">
-              <article class="service h-100">
-                <span>02 / WEBSITE EXPANSION</span>
-                <h3>Website Expansion</h3>
-                <p>
-                  A thoughtful website experience that expands your presence and lets your story and services come through clearly.
-                </p>
-              </article>
-            </div>
-
-            <div class="col-md-4">
-              <article class="service h-100">
-                <span>03 / WEBSITE REFRESH</span>
-                <h3>Website tune-ups</h3>
-                <p>
-                  Better structure, clearer copy, and a refreshed visual rhythm for the site you already have.
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
+      <section class="section intro"><div class="container"><div class="intro-layout"><div class="intro-heading"><p class="eyebrow">The good stuff</p><h2>Small studio energy. Big-picture thinking.</h2></div><div class="maker intro-maker"><img src="img/ern.png" alt="Ern smiling in sunglasses"><div><strong>Meet the maker</strong><p>Hi, I'm Ernest. I build affordable websites that feel personal, useful, and easy to share.</p></div></div><div class="intro-copy intro-description"><p>We build websites that are easy to use and aligned with your brand. Through clear strategy, thoughtful design, and a human touch, we create sites that welcome visitors and help your business stand out.</p></div></div></div></section>
+      <section class="services-wrap" id="services"><div class="container section"><div class="row align-items-end g-4 mb-5"><div class="col-lg-8"><p class="eyebrow">What we make</p><h2>Built for where you are going.</h2></div><div class="col-lg-4 section-heading-copy"><p>Start with what you need today. Grow into what comes next.</p></div></div><div class="row g-4"><div class="col-md-4"><article class="service h-100"><span>01 / NEW WEBSITE</span><h3>New Website Build </h3><p>A polished online home base that’s easy to use and unmistakably yours.</p></article></div><div class="col-md-4"><article class="service h-100"><span>02 / WEBSITE EXPANSION</span><h3>Website Expansion</h3><p>A thoughtful website experience that expands your presence and lets your story and services come through clearly.</p></article></div><div class="col-md-4"><article class="service h-100"><span>03 / WEBSITE REFRESH</span><h3>Website tune-ups</h3><p>Better structure, clearer copy, and a refreshed visual rhythm for the site you already have.</p></article></div></div></div></section>
       <section class="section pricing-section" id="pricing">
         <div class="container">
-          <div class="row align-items-end g-4">
-            <div class="col-lg-8">
-              <p class="eyebrow">Texas website pricing</p>
-              <h2>What website pricing looks like across Texas.</h2>
-            </div>
-            <div class="col-lg-4 section-heading-copy">
-              <p>A simple look at published website pricing from Texas providers.</p>
-            </div>
-          </div>
-
+          <div class="row align-items-end g-4"><div class="col-lg-8"><p class="eyebrow">Texas website pricing</p><h2>What website pricing looks like across Texas.</h2></div><div class="col-lg-4 section-heading-copy"><p>A simple look at published website pricing from Texas providers.</p></div></div>
           <div class="pricing-chart-wrap">
             <div class="pricing-chart" aria-label="Bar chart comparing published one-year website costs">
-              <div class="pricing-axis" aria-hidden="true">
-                <span>$1,600</span><span>$1,200</span><span>$800</span><span>$400</span><span>$0</span>
-              </div>
-
-              <div class="pricing-group texas-group">
-                <div class="pricing-group-heading">
-                  <strong>TEXAS SITES</strong>
-                  <span>Our price</span>
-                </div>
-                <div class="pricing-bar-item texas-sites">
-                  <span class="pricing-bar-value">$500</span>
-                  <div class="pricing-bar" style="height:31.25%;"></div>
-                  <span class="pricing-bar-label">Texas Sites</span>
-                </div>
-              </div>
-
-              <div class="pricing-group competitor-group">
-                <div class="pricing-group-heading">
-                  <strong>OTHER TEXAS PROVIDERS</strong>
-                  <span>Published market pricing</span>
-                </div>
-                <div class="pricing-bar-item">
-                  <span class="pricing-bar-value">$1,300</span>
-                  <div class="pricing-bar" style="height:81.25%;"></div>
-                  <span class="pricing-bar-label">North<br>Texas</span>
-                </div>
-                <div class="pricing-bar-item">
-                  <span class="pricing-bar-value">$1,430</span>
-                  <div class="pricing-bar" style="height:89.375%;"></div>
-                  <span class="pricing-bar-label">Central<br>Texas</span>
-                </div>
-                <div class="pricing-bar-item">
-                  <span class="pricing-bar-value">$1,400</span>
-                  <div class="pricing-bar" style="height:87.5%;"></div>
-                  <span class="pricing-bar-label">South<br>Texas</span>
-                </div>
-              </div>
+              <div class="pricing-axis" aria-hidden="true"><span>$1,600</span><span>$1,200</span><span>$800</span><span>$400</span><span>$0</span></div>
+              <div class="pricing-group texas-group"><div class="pricing-group-heading"><strong>TEXAS SITES</strong><span>Our price</span></div><div class="pricing-bar-item texas-sites"><span class="pricing-bar-value">$500</span><div class="pricing-bar" style="height:31.25%;"></div><span class="pricing-bar-label">Texas Sites</span></div></div>
+              <div class="pricing-group competitor-group"><div class="pricing-group-heading"><strong>OTHER TEXAS PROVIDERS</strong><span>Published market pricing</span></div><div class="pricing-bar-item"><span class="pricing-bar-value">$1,300</span><div class="pricing-bar" style="height:81.25%;"></div><span class="pricing-bar-label">North<br>Texas</span></div><div class="pricing-bar-item"><span class="pricing-bar-value">$1,430</span><div class="pricing-bar" style="height:89.375%;"></div><span class="pricing-bar-label">Central<br>Texas</span></div><div class="pricing-bar-item"><span class="pricing-bar-value">$1,400</span><div class="pricing-bar" style="height:87.5%;"></div><span class="pricing-bar-label">South<br>Texas</span></div></div>
             </div>
-
             <p class="pricing-chart-note">Pricing shown is based on published website costs from Texas providers and is provided for comparison only. Actual packages and recurring costs vary by provider.</p>
           </div>
-
-          <div class="pricing-package-strip">
-            <div>
-              <strong>Texas Sites: $500</strong>
-              <p>Your website, domain registration, and monthly hosting are included.</p>
-            </div>
-            
-          </div>
-
+          <div class="pricing-package-strip"><div><strong>Texas Sites: $500</strong><p>Your website, domain registration, and monthly hosting are included.</p></div></div>
           <div class="package-card">
             <p class="eyebrow">Texas Sites · $500 website package</p>
             <h3>Everything you need to get online.</h3>
             <p>The $500 price is designed to be simple and predictable. Your domain registration and monthly hosting are included, so you know what your website costs from the beginning. After the first year, the only recurring cost is the domain renewal — currently $30/year.</p>
-            <ul class="package-list">
-              <li>Custom-designed small-business website</li><li>Mobile-responsive design</li><li>Search-engine-friendly setup</li><li>Domain registration included</li><li>Monthly hosting included</li><li>Website deployment and launch</li><li>Personal, direct design process</li><li class="package-feature-wide"><strong>Your business, clearly presented</strong><span>Services, your story, testimonials, photos or projects, and an easy way for customers to reach you.</span></li>
-            </ul>
-            <div class="package-highlight"><div><div class="package-price-label">One simple price</div><div class="package-price">$500 <small>per website</small></div></div><a class="button" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a></div>
+            <ul class="package-list"><li>Custom-designed small-business website</li><li>Mobile-responsive design</li><li>Search-engine-friendly setup</li><li>Domain registration included</li><li>Monthly hosting included</li><li>Website deployment and launch</li><li>Personal, direct design process</li><li class="package-feature-wide"><strong>Your business, clearly presented</strong><span>Services, your story, testimonials, photos or projects, and an easy way for customers to reach you.</span></li></ul>
+            <div class="package-highlight"><div><div class="package-price-label">One simple price</div><div class="package-price">$500 <small>per website</small></div></div></div>
+            <a class="button pricing-start-button" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
       </section>
-
-
-      <section class="section templates-section" id="templates">
-        <div class="container">
-          <div class="row align-items-end g-4 mb-5">
-            <div class="col-lg-8">
-              <p class="eyebrow">Website templates</p>
-              <h2>See what we can build for you.</h2>
-            </div>
-            <div class="col-lg-4 section-heading-copy">
-              <p>Explore a growing collection of website designs made for Texas small businesses. More templates are on the way.</p>
-            </div>
-          </div>
-
-          <div class="templates-grid">
-            <article class="template-card template-card-featured">
-              <div class="template-showcase">
-                <div class="template-showcase-main">
-                  <img id="template-main-image" src="img/templates/site2-home.jpg" alt="Modern Repairs website home page preview">
-                  <a class="template-button template-live-button" href="site2/" aria-label="View the Modern Repairs live website">View Live Website <span aria-hidden="true">→</span></a>
-                </div>
-                <div class="template-thumbnails" aria-label="Modern Repairs website screenshots">
-                  <button class="template-thumb is-active" type="button" data-template-image="img/templates/site2-home.jpg" data-template-alt="Modern Repairs website home page preview" aria-label="Show Modern Repairs home page">
-                    <img src="img/templates/site2-home.jpg" alt="" loading="lazy">
-                  </button>
-                  <button class="template-thumb" type="button" data-template-image="img/templates/site2-testimonials.jpg" data-template-alt="Modern Repairs testimonials page preview" aria-label="Show Modern Repairs testimonials page">
-                    <img src="img/templates/site2-testimonials.jpg" alt="" loading="lazy">
-                  </button>
-                  <button class="template-thumb" type="button" data-template-image="img/templates/site2-services.jpg" data-template-alt="Modern Repairs services page preview" aria-label="Show Modern Repairs services page">
-                    <img src="img/templates/site2-services.jpg" alt="" loading="lazy">
-                  </button>
-                  <button class="template-thumb" type="button" data-template-image="img/templates/site2-mobile.jpg" data-template-alt="Modern Repairs mobile website preview" aria-label="Show Modern Repairs mobile view">
-                    <img src="img/templates/site2-mobile.jpg" alt="" loading="lazy">
-                  </button>
-                </div>
-              </div>
-              <div class="template-info">
-                <div>
-                  <span class="template-type">Template 01 · Home Services</span>
-                  <h3>Modern Repairs</h3>
-                </div>
-                <p>A bold, modern service-business website designed to look great on every screen.</p>
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="section process-section" id="process">
-        <div class="container">
-          <div class="row g-5">
-            <div class="col-lg-5">
-              <p class="eyebrow">A calmer process</p>
-              <h2>Good work, without the mystery.</h2>
-            </div>
-
-            <div class="col-lg-7 process-list">
-              <div class="process-item row g-3">
-                <b class="col-2">01</b>
-                <div class="col-10">
-                  <h3>Tell us your story</h3>
-                  <p>
-                    Share your vision, your brand, and what you offer.<br>We start with a friendly conversation about your work, your people, and what the site needs to do.
-                  </p>
-                </div>
-              </div>
-
-              <div class="process-item row g-3">
-                <b class="col-2">02</b>
-                <div class="col-10">
-                  <h3>Shape the plan</h3>
-                  <p>
-                    We build a clear plan and visual direction from your story.<br>You’ll see the path forward before we start creating anything.
-                  </p>
-                </div>
-              </div>
-
-              <div class="process-item row g-3">
-                <b class="col-2">03</b>
-                <div class="col-10">
-                  <h3>Bring it home</h3>
-                  <p>
-                    We refine the details together, then hand over a fast, responsive site you can feel
-                    proud to share.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="container contact" id="contact">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-8">
-            <p class="eyebrow">Have a good one?</p>
-            <h2>Let's make it feel at home online.</h2>
-          </div>
-
-          <div class="col-lg-4">
-            <p>Tell us a little about your idea and we will get back to you with next steps.</p>
-            <a class="button" href="mailto:ernestdurda@gmail.com">
-              Say hello <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section testimonials-section" id="testimonials">
-        <div class="container">
-          <div class="row align-items-end g-4 mb-5">
-            <div class="col-lg-8">
-              <p class="eyebrow">Kind words</p>
-              <h2>What our customers are saying.</h2>
-            </div>
-            <div class="col-lg-4 section-heading-copy">
-              <p>Real words from people we've had the pleasure of helping.</p>
-            </div>
-          </div>
-          <div class="testimonial-carousel" aria-live="polite">
-            <div id="testimonial-track" class="testimonial-track"></div>
-          </div>
-          <div class="testimonial-controls">
-            <div id="testimonial-dots" class="testimonial-dots" aria-label="Testimonial navigation"></div>
-          </div>
-        </div>
-      </section>
+      <section class="section templates-section" id="templates"><div class="container"><div class="row align-items-end g-4 mb-5"><div class="col-lg-8"><p class="eyebrow">Website templates</p><h2>See what we can build for you.</h2></div><div class="col-lg-4 section-heading-copy"><p>Explore a growing collection of website designs made for Texas small businesses. More templates are on the way.</p></div></div><div class="templates-grid"><article class="template-card template-card-featured"><div class="template-showcase"><div class="template-showcase-main"><img id="template-main-image" src="img/templates/site2-home.jpg" alt="Modern Repairs website home page preview"><a class="template-button template-live-button" href="site2/" aria-label="View the Modern Repairs live website">View Live Website <span aria-hidden="true">→</span></a></div><div class="template-thumbnails" aria-label="Modern Repairs website screenshots"><button class="template-thumb is-active" type="button" data-template-image="img/templates/site2-home.jpg" data-template-alt="Modern Repairs website home page preview" aria-label="Show Modern Repairs home page"><img src="img/templates/site2-home.jpg" alt="" loading="lazy"></button><button class="template-thumb" type="button" data-template-image="img/templates/site2-testimonials.jpg" data-template-alt="Modern Repairs testimonials page preview" aria-label="Show Modern Repairs testimonials page"><img src="img/templates/site2-testimonials.jpg" alt="" loading="lazy"></button><button class="template-thumb" type="button" data-template-image="img/templates/site2-services.jpg" data-template-alt="Modern Repairs services page preview" aria-label="Show Modern Repairs services page"><img src="img/templates/site2-services.jpg" alt="" loading="lazy"></button><button class="template-thumb" type="button" data-template-image="img/templates/site2-mobile.jpg" data-template-alt="Modern Repairs mobile website preview" aria-label="Show Modern Repairs mobile view"><img src="img/templates/site2-mobile.jpg" alt="" loading="lazy"></button></div></div><div class="template-info"><div><span class="template-type">Template 01 · Home Services</span><h3>Modern Repairs</h3></div><p>A bold, modern service-business website designed to look great on every screen.</p></div></article></div></div></section>
+      <section class="section process-section" id="process"><div class="container"><div class="row g-5"><div class="col-lg-5"><p class="eyebrow">A calmer process</p><h2>Good work, without the mystery.</h2></div><div class="col-lg-7 process-list"><div class="process-item row g-3"><b class="col-2">01</b><div class="col-10"><h3>Tell us your story</h3><p>Share your vision, your brand, and what you offer.<br>We start with a friendly conversation about your work, your people, and what the site needs to do.</p></div></div><div class="process-item row g-3"><b class="col-2">02</b><div class="col-10"><h3>Shape the plan</h3><p>We build a clear plan and visual direction from your story.<br>You’ll see the path forward before we start creating anything.</p></div></div><div class="process-item row g-3"><b class="col-2">03</b><div class="col-10"><h3>Bring it home</h3><p>We refine the details together, then hand over a fast, responsive site you can feel proud to share.</p></div></div></div></div></div></section>
+      <section class="container contact" id="contact"><div class="row align-items-center g-4"><div class="col-lg-8"><p class="eyebrow">Have a good one?</p><h2>Let's make it feel at home online.</h2></div><div class="col-lg-4"><p>Tell us a little about your idea and we will get back to you with next steps.</p><a class="button" href="mailto:ernestdurda@gmail.com">Say hello <span aria-hidden="true">&rarr;</span></a></div></div></section>
+      <section class="section testimonials-section" id="testimonials"><div class="container"><div class="row align-items-end g-4 mb-5"><div class="col-lg-8"><p class="eyebrow">Kind words</p><h2>What our customers are saying.</h2></div><div class="col-lg-4 section-heading-copy"><p>Real words from people we've had the pleasure of helping.</p></div></div><div class="testimonial-carousel" aria-live="polite"><div id="testimonial-track" class="testimonial-track"></div></div><div class="testimonial-controls"><div id="testimonial-dots" class="testimonial-dots" aria-label="Testimonial navigation"></div></div></div></section>
     </main>
-
-    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 19V5"></path>
-        <path d="m6 11 6-6 6 6"></path>
-      </svg>
-    </button>
-
-    <footer>
-      <span>Texas Sites</span>
-      <span>Websites made with care, wherever you are. <span id="site-commit">91837426</span></span>
-      <span>2026</span>
-    </footer>
-
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"></path><path d="m6 11 6-6 6 6"></path></svg></button>
+    <footer><span>Texas Sites</span><span>Websites made with care, wherever you are. <span id="site-commit">91837426</span></span><span>2026</span></footer>
     <script>
       (() => {
         const url = "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json";
-        const track = document.getElementById("testimonial-track");
-        const dots = document.getElementById("testimonial-dots");
-        const slideInterval = 5000;
-        const slideDuration = 1500;
-        let testimonials = [];
-        let currentIndex = 0;
-        let timer;
-        let transitionFallback;
-        let isTransitioning = false;
-
-        const escapeHtml = (value) => String(value)
-            .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-        const visibleCount = () => window.innerWidth < 768 ? 1 : 3;
-
-        const buildCard = (item) => {
-          const card = document.createElement("article");
-          card.className = "testimonial-item";
-          card.innerHTML = `
-            <p class="testimonial-name">${escapeHtml(item.customerName)}</p>
-            <div class="testimonial-quote" aria-hidden="true">“</div>
-            <blockquote>${escapeHtml(item.testimonial)}</blockquote>
-          `;
-          return card;
-        };
-
-        const renderDots = () => {
-          dots.innerHTML = "";
-
-          testimonials.forEach((_, index) => {
-            const dot = document.createElement("button");
-            dot.type = "button";
-            const logicalIndex = (currentIndex - visibleCount() +
-              testimonials.length) % testimonials.length;
-            dot.className = index === logicalIndex ?
-              "testimonial-dot active" :
-              "testimonial-dot";
-            dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
-            dot.addEventListener("click", () => goTo(index));
-            dots.appendChild(dot);
-          });
-        };
-
-        const setPosition = (animate) => {
-          const count = visibleCount();
-          const containerWidth = track.parentElement.clientWidth;
-          const gap = count === 1 ? 0 : 24;
-          const cardWidth = (containerWidth - gap * (count - 1)) / count;
-          const step = cardWidth + gap;
-          const offset = currentIndex * step;
-
-          track.querySelectorAll(".testimonial-item").forEach((card) => {
-            card.style.flexBasis = `${cardWidth}px`;
-          });
-
-          track.style.width =
-            `${cardWidth * (testimonials.length + count) +
-              gap * (testimonials.length + count - 1)}px`;
-
-          if (!animate) {
-            track.style.transition = "none";
-            track.style.transform = `translate3d(-${offset}px, 0, 0)`;
-            return;
-          }
-
-          track.style.transition =
-            `transform ${slideDuration}ms cubic-bezier(.22,.61,.36,1)`;
-
-          void track.offsetWidth;
-
-          window.requestAnimationFrame(() => {
-            track.style.transform = `translate3d(-${offset}px, 0, 0)`;
-          });
-        };
-
-        const render = () => {
-          if (!testimonials.length) return;
-
-          const count = visibleCount();
-          const logicalIndex = testimonials.length ?
-            ((currentIndex - count) % testimonials.length +
-              testimonials.length) % testimonials.length : 0;
-          const leadingClones = testimonials.slice(-count);
-          const trailingClones = testimonials.slice(0, count);
-
-          track.classList.remove("is-sliding");
-          track.innerHTML = "";
-
-          leadingClones.forEach((item) => {
-            const clone = buildCard(item);
-            clone.setAttribute("aria-hidden", "true");
-            track.appendChild(clone);
-          });
-
-          testimonials.forEach((item) => {
-            track.appendChild(buildCard(item));
-          });
-
-          trailingClones.forEach((item) => {
-            const clone = buildCard(item);
-            clone.setAttribute("aria-hidden", "true");
-            track.appendChild(clone);
-          });
-
-          currentIndex = count + logicalIndex;
-          setPosition(false);
-          renderDots();
-        };
-
-        const finishTransition = () => {
-          window.clearTimeout(transitionFallback);
-          transitionFallback = undefined;
-
-          if (!testimonials.length) {
-            isTransitioning = false;
-            return;
-          }
-
-          const count = visibleCount();
-
-          if (currentIndex >= testimonials.length + count) {
-            currentIndex = count;
-            setPosition(false);
-            renderDots();
-          } else if (currentIndex < count) {
-            currentIndex = testimonials.length + count - 1;
-            setPosition(false);
-            renderDots();
-          }
-
-          isTransitioning = false;
-          restart();
-        };
-
-        const goTo = (index) => {
-          if (!testimonials.length || isTransitioning) return;
-
-          window.clearTimeout(timer);
-          currentIndex = visibleCount() + index;
-          isTransitioning = true;
-          setPosition(true);
-          renderDots();
-
-          transitionFallback = window.setTimeout(
-              finishTransition,
-              slideDuration + 100
-          );
-        };
-
-        const advance = () => {
-          if (testimonials.length <= visibleCount() || isTransitioning) return;
-
-          isTransitioning = true;
-          currentIndex += 1;
-          setPosition(true);
-          renderDots();
-
-          transitionFallback = window.setTimeout(
-              finishTransition,
-              slideDuration + 100
-          );
-        };
-
-        const restart = () => {
-          window.clearTimeout(timer);
-          timer = window.setTimeout(advance, slideInterval);
-        };
-
-        track.addEventListener("transitionend", (event) => {
-          if (event.propertyName === "transform") {
-            finishTransition();
-          }
-        });
-
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchTracking = false;
-
-        track.addEventListener("touchstart", (event) => {
-          if (event.touches.length !== 1) return;
-
-          touchStartX = event.touches[0].clientX;
-          touchStartY = event.touches[0].clientY;
-          touchTracking = true;
-        }, {passive: true});
-
-        track.addEventListener("touchmove", (event) => {
-          if (!touchTracking || event.touches.length !== 1) return;
-
-          const deltaX = event.touches[0].clientX - touchStartX;
-          const deltaY = event.touches[0].clientY - touchStartY;
-
-          if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-            event.preventDefault();
-          }
-        }, {passive: false});
-
-        track.addEventListener("touchend", (event) => {
-          if (!touchTracking || !testimonials.length || isTransitioning) {
-            touchTracking = false;
-            return;
-          }
-
-          const deltaX = event.changedTouches[0].clientX - touchStartX;
-          const deltaY = event.changedTouches[0].clientY - touchStartY;
-          const swipeDistance = 50;
-
-          touchTracking = false;
-
-          if (Math.abs(deltaX) < swipeDistance ||
-              Math.abs(deltaX) <= Math.abs(deltaY)) {
-            return;
-          }
-
-          window.clearTimeout(timer);
-
-          if (deltaX < 0) {
-            advance();
-          } else {
-            currentIndex -= 1;
-            isTransitioning = true;
-            setPosition(true);
-            renderDots();
-
-            transitionFallback = window.setTimeout(
-                finishTransition,
-                slideDuration + 100
-            );
-          }
-        }, {passive: true});
-
-        fetch(url, {cache: "no-store"})
-            .then((response) => response.ok ? response.json() : null)
-            .then((data) => {
-              testimonials = Array.isArray(data?.["texas-sites"]) ?
-                data["texas-sites"].filter((item) => item.published !== false) : [];
-
-              render();
-              restart();
-            })
-            .catch((error) => console.error("Unable to load testimonials:", error));
-
-        let resizeTimer;
-        window.addEventListener("resize", () => {
-          window.clearTimeout(resizeTimer);
-          window.clearTimeout(transitionFallback);
-          window.clearTimeout(timer);
-
-          resizeTimer = window.setTimeout(() => {
-            currentIndex = visibleCount();
-            isTransitioning = false;
-            render();
-            restart();
-          }, 150);
-        });
+        const track = document.getElementById("testimonial-track"), dots = document.getElementById("testimonial-dots"), slideInterval = 5000, slideDuration = 1500;
+        let testimonials=[], currentIndex=0, timer, transitionFallback, isTransitioning=false;
+        const escapeHtml = (value) => String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+        const visibleCount=()=>window.innerWidth<768?1:3;
+        const buildCard=(item)=>{const card=document.createElement("article");card.className="testimonial-item";card.innerHTML=`<p class="testimonial-name">${escapeHtml(item.customerName)}</p><div class="testimonial-quote" aria-hidden="true">“</div><blockquote>${escapeHtml(item.testimonial)}</blockquote>`;return card;};
+        const renderDots=()=>{dots.innerHTML="";testimonials.forEach((_,index)=>{const dot=document.createElement("button");dot.type="button";const logicalIndex=(currentIndex-visibleCount()+testimonials.length)%testimonials.length;dot.className=index===logicalIndex?"testimonial-dot active":"testimonial-dot";dot.setAttribute("aria-label",`Show testimonial ${index+1}`);dot.addEventListener("click",()=>goTo(index));dots.appendChild(dot);});};
+        const setPosition=(animate)=>{const count=visibleCount(),containerWidth=track.parentElement.clientWidth,gap=count===1?0:24,cardWidth=(containerWidth-gap*(count-1))/count,step=cardWidth+gap,offset=currentIndex*step;track.querySelectorAll(".testimonial-item").forEach(card=>card.style.flexBasis=`${cardWidth}px`);track.style.width=`${cardWidth*(testimonials.length+count)+gap*(testimonials.length+count-1)}px`;if(!animate){track.style.transition="none";track.style.transform=`translate3d(-${offset}px,0,0)`;return;}track.style.transition=`transform ${slideDuration}ms cubic-bezier(.22,.61,.36,1)`;void track.offsetWidth;window.requestAnimationFrame(()=>track.style.transform=`translate3d(-${offset}px,0,0)`);};
+        const render=()=>{if(!testimonials.length)return;const count=visibleCount(),logicalIndex=((currentIndex-count)%testimonials.length+testimonials.length)%testimonials.length,leadingClones=testimonials.slice(-count),trailingClones=testimonials.slice(0,count);track.classList.remove("is-sliding");track.innerHTML="";leadingClones.forEach(item=>{const clone=buildCard(item);clone.setAttribute("aria-hidden","true");track.appendChild(clone);});testimonials.forEach(item=>track.appendChild(buildCard(item)));trailingClones.forEach(item=>{const clone=buildCard(item);clone.setAttribute("aria-hidden","true");track.appendChild(clone);});currentIndex=count+logicalIndex;setPosition(false);renderDots();};
+        const finishTransition=()=>{window.clearTimeout(transitionFallback);transitionFallback=undefined;if(!testimonials.length){isTransitioning=false;return;}const count=visibleCount();if(currentIndex>=testimonials.length+count){currentIndex=count;setPosition(false);renderDots();}else if(currentIndex<count){currentIndex=testimonials.length+count-1;setPosition(false);renderDots();}isTransitioning=false;restart();};
+        const goTo=(index)=>{if(!testimonials.length||isTransitioning)return;window.clearTimeout(timer);currentIndex=visibleCount()+index;isTransitioning=true;setPosition(true);renderDots();transitionFallback=window.setTimeout(finishTransition,slideDuration+100);};
+        const advance=()=>{if(testimonials.length<=visibleCount()||isTransitioning)return;isTransitioning=true;currentIndex+=1;setPosition(true);renderDots();transitionFallback=window.setTimeout(finishTransition,slideDuration+100);};
+        const restart=()=>{window.clearTimeout(timer);timer=window.setTimeout(advance,slideInterval);};
+        track.addEventListener("transitionend",(event)=>{if(event.propertyName==="transform")finishTransition();});
+        let touchStartX=0,touchStartY=0,touchTracking=false;
+        track.addEventListener("touchstart",(event)=>{if(event.touches.length!==1)return;touchStartX=event.touches[0].clientX;touchStartY=event.touches[0].clientY;touchTracking=true;},{passive:true});
+        track.addEventListener("touchmove",(event)=>{if(!touchTracking||event.touches.length!==1)return;const deltaX=event.touches[0].clientX-touchStartX,deltaY=event.touches[0].clientY-touchStartY;if(Math.abs(deltaX)>Math.abs(deltaY)&&Math.abs(deltaX)>10)event.preventDefault();},{passive:false});
+        track.addEventListener("touchend",(event)=>{if(!touchTracking||!testimonials.length||isTransitioning){touchTracking=false;return;}const deltaX=event.changedTouches[0].clientX-touchStartX,deltaY=event.changedTouches[0].clientY-touchStartY,swipeDistance=50;touchTracking=false;if(Math.abs(deltaX)<swipeDistance||Math.abs(deltaX)<=Math.abs(deltaY))return;window.clearTimeout(timer);if(deltaX<0){advance();}else{currentIndex-=1;isTransitioning=true;setPosition(true);renderDots();transitionFallback=window.setTimeout(finishTransition,slideDuration+100);}}, {passive:true});
+        fetch(url,{cache:"no-store"}).then(response=>response.ok?response.json():null).then(data=>{testimonials=Array.isArray(data?.["texas-sites"])?data["texas-sites"].filter(item=>item.published!==false):[];render();restart();}).catch(error=>console.error("Unable to load testimonials:",error));
+        let resizeTimer;window.addEventListener("resize",()=>{window.clearTimeout(resizeTimer);window.clearTimeout(transitionFallback);window.clearTimeout(timer);resizeTimer=window.setTimeout(()=>{currentIndex=visibleCount();isTransitioning=false;render();restart();},150);});
       })();
     </script>
-
     <script>
-      (() => {
-        const mainImage = document.getElementById("template-main-image");
-        const thumbs = document.querySelectorAll(".template-thumb");
-        if (!mainImage || !thumbs.length) return;
-
-        thumbs.forEach((thumb) => {
-          thumb.addEventListener("click", () => {
-            mainImage.src = thumb.dataset.templateImage;
-            mainImage.alt = thumb.dataset.templateAlt;
-
-            thumbs.forEach((item) => item.classList.remove("is-active"));
-            thumb.classList.add("is-active");
-          });
-        });
-      })();
+      (() => { const mainImage=document.getElementById("template-main-image"),thumbs=document.querySelectorAll(".template-thumb"); if(!mainImage||!thumbs.length)return; thumbs.forEach((thumb)=>thumb.addEventListener("click",()=>{mainImage.src=thumb.dataset.templateImage;mainImage.alt=thumb.dataset.templateAlt;thumbs.forEach((item)=>item.classList.remove("is-active"));thumb.classList.add("is-active");})); })();
     </script>
-
     <script>
-      (() => {
-        const backToTop = document.getElementById("back-to-top");
-
-        const updateBackToTop = () => {
-          backToTop.classList.toggle("is-visible", window.scrollY > 500);
-        };
-
-        backToTop.addEventListener("click", () => {
-          window.scrollTo({top: 0, behavior: "smooth"});
-        });
-
-        window.addEventListener("scroll", updateBackToTop, {passive: true});
-        updateBackToTop();
-      })();
+      (() => { const backToTop=document.getElementById("back-to-top"); const updateBackToTop=()=>backToTop.classList.toggle("is-visible",window.scrollY>500); backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"})); window.addEventListener("scroll",updateBackToTop,{passive:true}); updateBackToTop(); })();
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
