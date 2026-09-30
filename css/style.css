@@ -177,11 +177,9 @@ footer { width:min(1320px,calc(100% - 48px)); margin:auto; padding:25px 0 34px; 
 .service h3 { max-width:260px; font-size:30px; }
 
 .pricing-section { position:relative; overflow:hidden; }
-.pricing-section::before { content:"$500"; position:absolute; right:-25px; top:35px; color:rgba(49,88,103,.045); font-family:Fraunces,Georgia,serif; font-size:clamp(120px,22vw,290px); line-height:1; pointer-events:none; }
 .pricing-chart-wrap, .pricing-package-strip, .package-card { position:relative; z-index:1; }
 .pricing-package-strip { border-radius:3px; box-shadow:0 8px 22px rgba(45,45,40,.05); }
 .package-card { border-radius:4px; box-shadow:0 14px 32px rgba(23,45,59,.14); position:relative; overflow:hidden; }
-.package-card::after { content:"$500"; position:absolute; right:30px; top:15px; color:rgba(247,240,228,.055); font-family:Fraunces,Georgia,serif; font-size:110px; line-height:1; pointer-events:none; }
 
 .templates-section { position:relative; background:var(--navy); color:var(--cream); }
 .templates-section .section-heading-copy { color:rgba(247,240,228,.68); }
