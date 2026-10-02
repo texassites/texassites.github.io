@@ -159,7 +159,7 @@
                   </div>
                   <div class="inquiry-field">
                     <label for="inquiry-phone">Phone</label>
-                    <input id="inquiry-phone" name="contact_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(111) 111-1111" maxlength="14" aria-describedby="inquiry-phone-error">
+                    <input id="inquiry-phone" name="contact_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(210) 555-1234" maxlength="14" aria-describedby="inquiry-phone-error">
                     <p class="inquiry-phone-error" id="inquiry-phone-error" hidden>Enter a 10-digit phone number.</p>
                   </div>
                   <div class="inquiry-field">
@@ -264,6 +264,7 @@
           if(valid&&digits.length===10)phone.value=formatPhone(digits);
         };
         phone.addEventListener("input",()=>{
+          phone.value=formatPhone(phone.value);
           phone.setCustomValidity("");
           phoneError.hidden=true;
         });
