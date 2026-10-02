@@ -53,8 +53,9 @@
       .inquiry-field { display:flex; flex-direction:column; gap:7px; }
       .inquiry-field.full { grid-column:1 / -1; }
       .inquiry-field label { color:rgba(247,240,228,.72); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
-      .inquiry-field input, .inquiry-field textarea { width:100%; border:1px solid rgba(247,240,228,.22); border-radius:2px; background:rgba(247,240,228,.07); color:var(--cream); padding:11px 12px; font:inherit; font-size:13px; outline:none; }
-      .inquiry-field input::placeholder, .inquiry-field textarea::placeholder { color:rgba(247,240,228,.42); }
+      .inquiry-field input, .inquiry-field textarea { width:100%; border:1px solid rgba(247,240,228,.22); border-radius:2px; background:var(--cream); color:var(--navy); padding:11px 12px; font:inherit; font-size:13px; outline:none; }
+      .inquiry-field input::placeholder, .inquiry-field textarea::placeholder { color:rgba(45,45,40,.48); }
+      .inquiry-field input:-webkit-autofill, .inquiry-field input:-webkit-autofill:hover, .inquiry-field input:-webkit-autofill:focus { -webkit-text-fill-color:var(--navy); -webkit-box-shadow:0 0 0 1000px var(--cream) inset; box-shadow:0 0 0 1000px var(--cream) inset; }
       .inquiry-field input:focus, .inquiry-field textarea:focus { border-color:rgba(224,160,142,.75); box-shadow:0 0 0 2px rgba(224,160,142,.08); }
       .inquiry-phone-error { margin:0; color:#e0a08e; font-size:11px; line-height:1.4; }
       .inquiry-field textarea { min-height:105px; resize:vertical; }
@@ -246,18 +247,28 @@
         const phone=document.getElementById("inquiry-phone");
         const phoneError=document.getElementById("inquiry-phone-error");
         if(!phone)return;
+        const getDigits=(value)=>value.replace(/\D/g,"").slice(0,10);
         const formatPhone=(value)=>{
-          const digits=value.replace(/\\D/g,"").slice(0,10);
+          const digits=getDigits(value);
+          if(!digits)return "";
           if(digits.length<4)return digits;
           if(digits.length<7)return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
           return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
         };
-        phone.addEventListener("input",()=>{
-          phone.value=formatPhone(phone.value);
-          const digits=phone.value.replace(/\\D/g,"");
+        const validatePhone=()=>{
+          const digits=getDigits(phone.value);
           const valid=!digits.length||digits.length===10;
           phoneError.hidden=valid;
           phone.setCustomValidity(valid?"":"Enter a 10-digit phone number.");
+          if(valid&&digits.length===10)phone.value=formatPhone(digits);
+        };
+        phone.addEventListener("input",()=>{
+          phone.setCustomValidity("");
+          phoneError.hidden=true;
+        });
+        phone.addEventListener("blur",()=>{
+          phone.value=formatPhone(phone.value);
+          validatePhone();
         });
       })();
     </script>
