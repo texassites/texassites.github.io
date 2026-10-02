@@ -56,6 +56,7 @@
       .inquiry-field input, .inquiry-field textarea { width:100%; border:1px solid rgba(247,240,228,.22); border-radius:2px; background:rgba(247,240,228,.07); color:var(--cream); padding:11px 12px; font:inherit; font-size:13px; outline:none; }
       .inquiry-field input::placeholder, .inquiry-field textarea::placeholder { color:rgba(247,240,228,.42); }
       .inquiry-field input:focus, .inquiry-field textarea:focus { border-color:rgba(224,160,142,.75); box-shadow:0 0 0 2px rgba(224,160,142,.08); }
+      .inquiry-phone-error { margin:0; color:#e0a08e; font-size:11px; line-height:1.4; }
       .inquiry-field textarea { min-height:105px; resize:vertical; }
       .inquiry-contact-options { display:flex; gap:18px; align-items:center; min-height:43px; }
       .inquiry-contact-options label { display:flex; align-items:center; gap:7px; color:rgba(247,240,228,.85); font-size:13px; letter-spacing:0; text-transform:none; }
@@ -156,13 +157,15 @@
                   </div>
                   <div class="inquiry-field">
                     <label for="inquiry-phone">Phone</label>
-                    <input id="inquiry-phone" name="contact_phone" type="tel" placeholder="Your phone number">
+                    <input id="inquiry-phone" name="contact_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(111) 111-1111" maxlength="14" aria-describedby="inquiry-phone-error">
+                    <p class="inquiry-phone-error" id="inquiry-phone-error" hidden>Enter a 10-digit phone number.</p>
                   </div>
                   <div class="inquiry-field">
                     <label>Preferred contact</label>
                     <div class="inquiry-contact-options">
                       <label><input type="radio" name="call_or_sms" value="call" checked> Call</label>
-                      <label><input type="radio" name="call_or_sms" value="sms"> SMS</label>
+                      <label><input type="radio" name="call_or_sms" value="text"> Text</label>
+                      <label><input type="radio" name="call_or_sms" value="email"> Email</label>
                     </div>
                   </div>
                   <div class="inquiry-field full">
@@ -236,6 +239,26 @@
           try{sessionStorage.setItem("texasSitesFallSpecialShown","1");}catch(error){}
         };
         okButton.addEventListener("click",closeModal);
+      })();
+    </script>
+    <script>
+      (() => {
+        const phone=document.getElementById("inquiry-phone");
+        const phoneError=document.getElementById("inquiry-phone-error");
+        if(!phone)return;
+        const formatPhone=(value)=>{
+          const digits=value.replace(/\\D/g,"").slice(0,10);
+          if(digits.length<4)return digits;
+          if(digits.length<7)return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+          return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+        };
+        phone.addEventListener("input",()=>{
+          phone.value=formatPhone(phone.value);
+          const digits=phone.value.replace(/\\D/g,"");
+          const valid=!digits.length||digits.length===10;
+          phoneError.hidden=valid;
+          phone.setCustomValidity(valid?"":"Enter a 10-digit phone number.");
+        });
       })();
     </script>
     <script>
