@@ -47,7 +47,7 @@ h1,h2 { margin:0; font-family:Fraunces,Georgia,serif; font-weight:500; letter-sp
 h1 { max-width:700px; font-size:clamp(52px,7vw,92px); }
 h2 { font-size:clamp(38px,4.6vw,60px); }
 .hero-copy { max-width:480px; margin:28px 0 36px; color:rgba(247,240,228,.82); font-size:17px; line-height:1.7; }
-.button { display:inline-flex; gap:13px; align-items:center; padding:15px 20px; border-radius:99px; background:var(--red); color:#fff8ee; font-size:13px; font-weight:700; }
+.button { display:inline-flex; gap:13px; align-items:center; padding:15px 20px; border:0; border-radius:99px; background:var(--red); color:#fff8ee; font-size:13px; font-weight:700; appearance:none; -webkit-appearance:none; background-clip:padding-box; -webkit-tap-highlight-color:transparent; }\n.button:focus { outline:none; }\n.button:focus-visible { outline:2px solid rgba(247,240,228,.75); outline-offset:3px; }
 .button span { font-size:18px; }
 .section { padding-top:110px; padding-bottom:110px; }
 .intro-copy { max-width:530px; color:#5e645c; font-size:17px; line-height:1.75; }
