@@ -57,8 +57,8 @@
       .inquiry-field input::placeholder, .inquiry-field textarea::placeholder { color:rgba(45,45,40,.48); }
       .inquiry-field input:-webkit-autofill, .inquiry-field input:-webkit-autofill:hover, .inquiry-field input:-webkit-autofill:focus { -webkit-text-fill-color:var(--navy); -webkit-box-shadow:0 0 0 1000px var(--cream) inset; box-shadow:0 0 0 1000px var(--cream) inset; }
       .inquiry-field input:focus, .inquiry-field textarea:focus { border-color:rgba(224,160,142,.75); box-shadow:0 0 0 2px rgba(224,160,142,.08); }
-        .inquiry-field input.is-valid, .inquiry-field textarea.is-valid { border-color:rgba(118,177,122,.85); box-shadow:0 0 0 2px rgba(118,177,122,.08); }
-        .inquiry-field input.is-invalid, .inquiry-field textarea.is-invalid { border-color:rgba(224,160,142,.9); box-shadow:0 0 0 2px rgba(224,160,142,.12); }
+        .inquiry-field input.is-valid, .inquiry-field textarea.is-valid { border-color:rgba(118,177,122,.85); background:#e7f0e5; box-shadow:0 0 0 2px rgba(118,177,122,.08); }
+        .inquiry-field input.is-invalid, .inquiry-field textarea.is-invalid { border-color:rgba(224,160,142,.9); background:#f7e2dc; box-shadow:0 0 0 2px rgba(224,160,142,.12); }
       .inquiry-phone-error, .inquiry-email-error { margin:0; color:#e0a08e; font-size:11px; line-height:1.4; }
       .inquiry-field textarea { min-height:105px; resize:vertical; }
       .inquiry-contact-options { display:flex; gap:18px; align-items:center; min-height:43px; }
@@ -196,7 +196,7 @@
       <section class="section testimonials-section" id="testimonials"><div class="container"><div class="row align-items-end g-4 mb-5"><div class="col-lg-8"><p class="eyebrow">Kind words</p><h2>What our customers are saying.</h2></div><div class="col-lg-4 section-heading-copy"><p>Real words from people we've had the pleasure of helping.</p></div></div><div class="testimonial-carousel" aria-live="polite"><div id="testimonial-track" class="testimonial-track"></div></div><div class="testimonial-controls"><div id="testimonial-dots" class="testimonial-dots" aria-label="Testimonial navigation"></div></div></div></section>
     </main>
     <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"></path><path d="m6 11 6-6 6 6"></path></svg></button>
-    <footer><span>Texas Sites</span><span>Websites made with care, wherever you are. <span id="site-commit">41826375</span></span><span>2026</span></footer>
+    <footer><span>Texas Sites</span><span>Websites made with care, wherever you are. <span id="site-commit">86420531</span></span><span>2026</span></footer>
     <script>
       (() => {
         const url = "https://raw.githubusercontent.com/texassites/texassites.github.io/main/testimonials/testimonials.json";
@@ -343,11 +343,14 @@
           const valid=!value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
           emailError.hidden=valid;
           email.setCustomValidity(valid?"":"Enter a valid email address.");
+          email.classList.toggle("is-valid",valid&&value.length>0);
+          email.classList.toggle("is-invalid",!valid&&value.length>0);
           return valid;
         };
         email.addEventListener("input",()=>{
           email.setCustomValidity("");
           emailError.hidden=true;
+          email.classList.remove("is-valid","is-invalid");
         });
         email.addEventListener("blur",validateEmail);
       })();
